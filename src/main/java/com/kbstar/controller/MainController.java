@@ -25,5 +25,18 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/meetings")
+    public String meetings(Model model) throws Exception {
+        model.addAttribute("center", "meetings");
+        return "index";
+    }
+
+
+    @RequestMapping("/meeting_details")
+    public String meetings_details(Model model) throws Exception {
+        model.addAttribute("center", "meeting_details");
+        return "index";
+    }
+
 
 }

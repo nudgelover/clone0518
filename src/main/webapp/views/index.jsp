@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -34,30 +34,6 @@ https://templatemo.com/tm-569-edu-meeting
   </head>
 
 <body>
-
-  <!-- Sub Header -->
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-sm-8">
-          <div class="left-content">
-            <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <div class="right-icons">
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
       <div class="container">
@@ -72,16 +48,25 @@ https://templatemo.com/tm-569-edu-meeting
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
                           <li><a href="/" class="active">Home</a></li>
-                          <li><a href="/apply">Apply Now</a></li>
+                          <li><a href="/apply">Digi Members</a></li>
+                          <li><a href="/apply">JMTGR</a></li>
+                          <li><a href="/apply">Board</a></li>
+
+                          <li><a href="/apply">Chat</a></li>
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Pages</a>
+                              <a href="javascript:void(0)">Udemy</a>
                               <ul class="sub-menu">
-                                  <li><a href="meetings.jsp">Upcoming Meetings</a></li>
-                                  <li><a href="meeting-details.jsp">Meeting Details</a></li>
+                                  <li><a href="/meetings">Course details</a></li>
+                                  <li><a href="/meeting_details">My Course</a></li>
                               </ul>
                           </li>
-                          <li class=""><a href="/courses">Courses</a></li>
-                          <li class=""><a href="#contact">Contact Us</a></li>
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Study</a>
+                              <ul class="sub-menu">
+                                  <li><a href="/meetings">스터디일지</a></li>
+                                  <li><a href="/meeting_details">스터디차트</a></li>
+                              </ul>
+                          </li>
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>
