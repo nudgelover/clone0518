@@ -1,8 +1,11 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Student;
+import com.kbstar.service.StudentService;
 import com.kbstar.utill.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,9 @@ public class AjaxImplController {
 
     @Value("${uploadimgdir}")
     String imgdir;
+
+    @Autowired
+    StudentService studentService;
 
 
     @RequestMapping("/getservertime")
@@ -72,6 +78,23 @@ public class AjaxImplController {
             long minutes = duration.toMinutes(); // 분 단위로 변환
             String minutesString = Long.toString(minutes);//String 변환
             result = minutesString + "분 늦었습니다!<br>내일은 조금 더 일찍 오십시오!";
+        }
+        return result;
+    }
+
+    @RequestMapping("/checkid")
+    public Object checkid(String id) throws Exception {
+
+        int result = 0;
+        Student student = null;
+        try {
+            student = studentService.get(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("시스템 장애: ER0005");
+        }
+        if(student!=null){
+            result = 1;
         }
         return result;
     }
