@@ -12,18 +12,29 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="caption">
-                        <h6>Hello Students</h6>
-                        <h2>Welcome to Education</h2>
-                        <p>This is an edu meeting HTML CSS template provided by <a rel="nofollow"
-                                                                                   href="https://templatemo.com/page/1"
-                                                                                   target="_blank">TemplateMo
-                            website</a>. This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels
-                            website, a group of young people by <a rel="nofollow"
-                                                                   href="https://www.pexels.com/@pressmaster"
-                                                                   target="_blank">Pressmaster</a>.</p>
-                        <div class="main-button-red">
-                            <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
-                        </div>
+                        <c:choose>
+                            <c:when test="${loginStudent==null}">
+                                <h6>Hello Student</h6>
+                                <h2>Welcome to Education</h2>
+                                <p>We provide wide variety of programming courses both back-end and front end. <a rel="nofollow"
+                                   href="/register" target="_blank">Click Here to Join us Right Now</a>.
+                                    Expand Your Career Opportunities With Us.</p>
+                                <div class="main-button-red">
+                                    <div class="scroll-to-section"><a href="/register">Join Us Now!</a></div>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <h6>Hello ${loginStudent.name}ดิ!</h6>
+                                <h2>Welcome to DIGICampus</h2>
+                                <p>We provide wide variety of programming courses both back-end and front end.
+                                    <a rel="nofollow" href="/lecture/allpage" target="_blank">Click Here to View All Course. </a>
+                                    Expand Your Career Opportunities Now With us!</p>
+                                <div class="main-button-red">
+                                    <div><a href="/att_check" target="_blank">ATTENDANCE</a></div>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
                     </div>
                 </div>
             </div>

@@ -71,12 +71,6 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/login1")
-    public String login1(Model model) throws Exception {
-        model.addAttribute("center", "login1");
-        return "index";
-    }
-
     @RequestMapping("/facts")
     public String facts(Model model) throws Exception {
         model.addAttribute("center", "facts");
@@ -97,14 +91,15 @@ public class MainController {
         try {
             student = studentService.get(id);
             if(student != null && encoder.matches(pwd,student.getPwd())){
-                nextPage = "loginok";
+                nextPage = "center";
                 session.setMaxInactiveInterval(12000000);
-                session.setAttribute("loginadm", student);
+                session.setAttribute("loginStudent", student);
             }
         } catch (Exception e) {
             throw new Exception("시스템 장애입니다. 잠시 후 다시 로그인 하십시오!");
         }
-        model.addAttribute("contents", nextPage);
+        model.addAttribute("loginStudent", student);
+        model.addAttribute("center", nextPage);
         return "index";
     }
 
@@ -127,6 +122,14 @@ public class MainController {
         }
         model.addAttribute("loginStudent", student);
         model.addAttribute("center", "center");
+        return "index";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(Model model, HttpSession session) throws Exception {
+        if(session != null){
+            session.invalidate();
+        }
         return "redirect:/";
     }
 

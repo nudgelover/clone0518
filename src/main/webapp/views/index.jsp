@@ -51,34 +51,44 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="/" class="active">Home</a></li>
-                        <li><a href="/apply">Digi Members</a></li>
-                        <li><a href="/apply">JMTGR</a></li>
-                        <li><a href="/apply">Board</a></li>
-                        <li><a href="/apply">Chat</a></li>
-                        <li class="has-sub">
-                            <a href="javascript:void(0)">Udemy</a>
-                            <ul class="sub-menu">
-                                <li><a href="/lecture/allpage">Course details</a></li>
-                                <li><a href="/meeting_details">My Course</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="javascript:void(0)">Study</a>
-                            <ul class="sub-menu">
-                                <li><a href="/meetings">스터디일지</a></li>
-                                <li><a href="/meeting_details">스터디차트</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <!--메뉴명 추후 정정 예정-->
-                            <a href="javascript:void(0)">BlahBlah</a>
-                            <ul class="sub-menu">
-                                <li><a href="/att_check">Attendance</a></li>
-                                <li><a href="#">Diagosis</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/login">LOGIN</a></li>
-                        <li><a href="/join">JOIN</a></li>
+                        <c:choose>
+                            <c:when test="${loginStudent!=null}">
+                                <li><a href="/apply">Digi Members</a></li>
+                                <li><a href="/apply">JMTGR</a></li>
+                                <li><a href="/apply">Board</a></li>
+                                <li><a href="/apply">Chat</a></li>
+                                <li class="has-sub">
+                                    <a href="javascript:void(0)">Udemy</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/lecture/allpage">Course details</a></li>
+                                        <li><a href="/meeting_details">My Course</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a href="javascript:void(0)">Study</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/meetings">스터디일지</a></li>
+                                        <li><a href="/meeting_details">스터디차트</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <!--메뉴명 추후 정정 예정-->
+                                    <a href="javascript:void(0)">BlahBlah</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/att_check">Attendance</a></li>
+                                        <li><a href="#">Diagosis</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/mypage">MyPage</a></li>
+                                <li><a href="/logout">LOGOUT</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="/login">LOGIN</a></li>
+                                <li><a href="/register">JOIN</a></li>
+                            </c:otherwise>
+                        </c:choose>
+
+
                     </ul>
                     <!-- ***** Menu End ***** -->
                 </nav>
