@@ -35,7 +35,7 @@ public class LectureController {
         }
         model.addAttribute("target","lecture");
         model.addAttribute("cpage",p);
-        model.addAttribute("center","allpage");
+        model.addAttribute("center",dir+"allpage");
         return "index";
     }
 }

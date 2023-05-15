@@ -61,7 +61,7 @@
                             </c:forEach>
                         </div>
                     </div>
-                        <jsp:include page="page.jsp"/>
+                        <jsp:include page="../page.jsp"/>
                 </div>
             </div>
         </div>

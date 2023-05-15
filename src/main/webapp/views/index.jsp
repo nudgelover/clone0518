@@ -67,8 +67,8 @@
                                 <li class="has-sub">
                                     <a href="javascript:void(0)">Study</a>
                                     <ul class="sub-menu">
-                                        <li><a href="/meetings">스터디일지</a></li>
-                                        <li><a href="/meeting_details">스터디차트</a></li>
+                                        <li><a href="/study/allpage">Study Board</a></li>
+                                        <li><a href="/study/chart">Study Chart</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-sub">

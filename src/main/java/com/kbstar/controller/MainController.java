@@ -96,7 +96,8 @@ public class MainController {
                 session.setAttribute("loginStudent", student);
             }
         } catch (Exception e) {
-            throw new Exception("시스템 장애입니다. 잠시 후 다시 로그인 하십시오!");
+            e.printStackTrace();
+            throw new Exception();
         }
         model.addAttribute("loginStudent", student);
         model.addAttribute("center", nextPage);

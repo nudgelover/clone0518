@@ -20,7 +20,7 @@
                                    href="/register" target="_blank">Click Here to Join us Right Now</a>.
                                     Expand Your Career Opportunities With Us.</p>
                                 <div class="main-button-red">
-                                    <div class="scroll-to-section"><a href="/register">Join Us Now!</a></div>
+                                    <div class><a href="/register">Join Us Now!</a></div>
                                 </div>
                             </c:when>
                             <c:otherwise>
