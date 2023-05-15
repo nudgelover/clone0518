@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Slf4j
@@ -41,6 +42,7 @@ public class MainController {
         model.addAttribute("center", "apply");
         return "index";
     }
+
     @RequestMapping("/courses")
     public String courses(Model model) throws Exception {
         model.addAttribute("center", "courses");
@@ -90,7 +92,7 @@ public class MainController {
 
         try {
             student = studentService.get(id);
-            if(student != null && encoder.matches(pwd,student.getPwd())){
+            if (student != null && encoder.matches(pwd, student.getPwd())) {
                 nextPage = "center";
                 session.setMaxInactiveInterval(12000000);
                 session.setAttribute("loginStudent", student);
@@ -113,7 +115,7 @@ public class MainController {
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model, int contact1, int contact2, int contact3, Student student, HttpSession session) throws Exception {
         try {
-            String contact = "0"+contact1+contact2+contact3;
+            String contact = "0" + contact1 + contact2 + contact3;
             student.setPwd(encoder.encode(student.getPwd()));
             student.setContact(contact);
             studentService.register(student);
@@ -128,10 +130,35 @@ public class MainController {
 
     @RequestMapping("/logout")
     public String logout(Model model, HttpSession session) throws Exception {
-        if(session != null){
+        if (session != null) {
             session.invalidate();
         }
         return "redirect:/";
     }
 
+
+    @RequestMapping("/mypage")
+    public String mypage(Model model, String id) throws Exception {
+        return "mypage";
+    }
+
+    @RequestMapping("/profile_edit")
+    public String profileEdit(Model model) throws Exception {
+
+        return "profileEdit";
+    }
+
+    @RequestMapping("/digimembers")
+    public String digimembers(Model model, Student student) throws Exception {
+        List<Student> list = null;
+        try {
+            list = studentService.get();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
+        model.addAttribute("studentList", list);
+        model.addAttribute("center", "digi_members");
+        return "index";
+    }
 }

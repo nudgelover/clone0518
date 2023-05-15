@@ -4,9 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -15,10 +13,8 @@
     <!--JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>DIGICampus</title>
-
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!--HighCharts-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
@@ -26,16 +22,15 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
     <link rel="stylesheet" href="/assets/css/lightbox.css">
-
     <!--https://templatemo.com/tm-569-edu-meeting-->
-</head>
 
+
+</head>
 <body>
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
@@ -53,7 +48,7 @@
                         <li><a href="/" class="active">Home</a></li>
                         <c:choose>
                             <c:when test="${loginStudent!=null}">
-                                <li><a href="/apply">Digi Members</a></li>
+                                <li><a href="/digimembers">Digi Members</a></li>
                                 <li><a href="/apply">JMTGR</a></li>
                                 <li><a href="/apply">Board</a></li>
                                 <li><a href="/apply">Chat</a></li>
@@ -87,8 +82,6 @@
                                 <li><a href="/register">JOIN</a></li>
                             </c:otherwise>
                         </c:choose>
-
-
                     </ul>
                     <!-- ***** Menu End ***** -->
                 </nav>
@@ -114,12 +107,10 @@
     </div>
 </section>
 </body>
-
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <script src="/assets/js/isotope.min.js"></script>
 <script src="/assets/js/owl-carousel.js"></script>
 <script src="/assets/js/lightbox.js"></script>
@@ -130,13 +121,11 @@
 <script>
     //according to loftblog tut
     $('.nav li:first').addClass('active');
-
     var showSection = function showSection(section, isAnimate) {
         var
             direction = section.replace(/#/, ''),
             reqSection = $('.section').filter('[data-section="' + direction + '"]'),
             reqSectionPos = reqSection.offset().top - 0;
-
         if (isAnimate) {
             $('body, html').animate({
                     scrollTop: reqSectionPos
@@ -145,9 +134,7 @@
         } else {
             $('body, html').scrollTop(reqSectionPos);
         }
-
     };
-
     var checkSection = function checkSection() {
         $('.section').each(function () {
             var
@@ -163,15 +150,12 @@
             }
         });
     };
-
     $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
         e.preventDefault();
         showSection($(this).attr('href'), true);
     });
-
     $(window).scroll(function () {
         checkSection();
     });
 </script>
-
 </html>
