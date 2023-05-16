@@ -46,15 +46,13 @@
                                             <div class="price">
                                                 <span><img src = "/assets/images/rating.png" id = "starRate"> ${obj.rating}</span>
                                             </div>
-                                            <a href="${obj.target}"><img src="/uimg/${obj.img}"></a>
+                                            <a href="/lecture/detail?id=${obj.id}"><img src="/uimg/${obj.img}"></a>
                                         </div>
                                         <div class="down-content">
                                             <div class="date">
-                                                <h6>${obj.rdate}</h6>
+                                                <h6>${obj.topic}</h6>
                                             </div>
-                                            <a href="${obj.target}"><h4>${obj.title}</h4></a>
-                                            <p>강사: ${obj.teacher}</p>
-                                            <p>언어: ${obj.topic}</p>
+                                            <a href="/lecture/detail?id=${obj.id}"><h4>${obj.title}</h4></a>
                                         </div>
                                     </div>
                                 </div>

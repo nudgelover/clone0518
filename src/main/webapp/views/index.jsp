@@ -53,10 +53,10 @@
                                 <li><a href="/apply">Board</a></li>
                                 <li><a href="/apply">Chat</a></li>
                                 <li class="has-sub">
-                                    <a href="javascript:void(0)">Udemy</a>
+                                    <a href="javascript:void(0)">Courses</a>
                                     <ul class="sub-menu">
-                                        <li><a href="/lecture/allpage">Course details</a></li>
-                                        <li><a href="/meeting_details">My Course</a></li>
+                                        <li><a href="/lecture/allpage">All Courses</a></li>
+                                        <li><a href="/lecture/mycourse?id=${loginStudent.id}">My Course</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-sub">

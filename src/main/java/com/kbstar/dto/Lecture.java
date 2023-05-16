@@ -14,9 +14,9 @@ public class Lecture {
     private String topic;
     private String target;
     private String rdate;
-    private String lec_time;
+    private String length;
     private float rating;
-    private int students;
+    private int price;
     private String img;
 
 }

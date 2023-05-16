@@ -1,7 +1,9 @@
 package com.kbstar.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.kbstar.dto.Cart;
 import com.kbstar.dto.Lecture;
+import com.kbstar.service.CartService;
 import com.kbstar.service.LectureService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -21,6 +25,9 @@ public class LectureController {
 
     @Autowired
     LectureService lectureService;
+
+    @Autowired
+    CartService cartService;
 
     String dir = "lecture/";
 
@@ -38,4 +45,33 @@ public class LectureController {
         model.addAttribute("center",dir+"allpage");
         return "index";
     }
+
+    @RequestMapping("/detail")
+    public String detail(Model model,Integer id) throws Exception {
+        Lecture lecture;
+        lecture = lectureService.get(id);
+
+        model.addAttribute("lecture", lecture);
+        model.addAttribute("center", dir+"detail");
+        return "index";
+    }
+
+    @RequestMapping("/mycourse")
+    public String mycourse(Model model, String id) throws Exception {
+
+        List<Cart> list = null;
+
+        try {
+            list = cartService.getMyCart(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("시스템 장애: ER0002");
+        }
+
+        model.addAttribute("mycourse", list);
+        model.addAttribute("center", dir+"mycourse");
+        return "index";
+    }
+
+
 }

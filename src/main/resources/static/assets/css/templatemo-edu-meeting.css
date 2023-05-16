@@ -1533,10 +1533,7 @@ section.meetings-page .pagination ul li a:hover {
   position: relative;
 }
 
-.meeting-single-item .thumb img {
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-}
+
 
 .meeting-single-item .thumb .price {
   position: absolute;

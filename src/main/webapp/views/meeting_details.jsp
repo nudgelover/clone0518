@@ -1,18 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-  <!-- ***** Header Area End ***** -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-  <section class="heading-page header-text" id="top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h6>Get all details</h6>
-          <h2>Online Teaching and Learning Tools</h2>
-        </div>
-      </div>
-    </div>
-  </section>
+<style>
+  section.meetings-page h6 {
+    margin-top: 0px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  section.meetings-page h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+</style>
 
   <section class="meetings-page" id="meetings">
+              <h6>Get all details</h6>
+              <h2>$Online Teaching and Learning Tools</h2>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -21,16 +42,16 @@
               <div class="meeting-single-item">
                 <div class="thumb">
                   <div class="price">
-                    <span>$14.00</span>
+                    <span>${lecture.rating}</span>
                   </div>
                   <div class="date">
-                    <h6>Nov <span>12</span></h6>
+                    <h6>TOPIC <span>${lecture.topic}</span></h6>
                   </div>
                   <a href="#"><img src="/assets/images/single-meeting.jpg" alt=""></a>
                 </div>
                 <div class="down-content">
-                  <a href="#"><h4>Online Teaching and Learning Tools</h4></a>
-                  <p>Recreio dos Bandeirantes, Rio de Janeiro - RJ, 22795-008, Brazil</p>
+                  <a href="#"><h4>${lecture.title}</h4></a>
+                  <p>${lecture.teacher}</p>
                   <p class="description">
                     This is an edu meeting HTML CSS template provided by <a href="https://templatemo.com/" target="_blank" rel="nofollow">TemplateMo website</a>. This is a Bootstrap v5.1.3 layout. If you need more free website templates like this one, please visit our website TemplateMo. Please tell your friends about our website. Thank you. If you want to get the latest collection of HTML CSS templates for your websites, you may visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.
                     
@@ -73,7 +94,7 @@
             </div>
             <div class="col-lg-12">
               <div class="main-button-red">
-                <a href="meetings.jsp">Back To Meetings List</a>
+                <a href="../meetings.jsp">Back To Meetings List</a>
               </div>
             </div>
           </div>

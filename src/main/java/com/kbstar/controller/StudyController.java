@@ -45,7 +45,7 @@ public class StudyController {
         }
         model.addAttribute("cpage", p);
         model.addAttribute("target", "study");
-        model.addAttribute("center", dir + "allpage2");
+        model.addAttribute("center", dir + "allpage");
         return "index";
     }
 

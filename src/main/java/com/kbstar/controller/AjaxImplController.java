@@ -1,6 +1,8 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Cart;
 import com.kbstar.dto.Student;
+import com.kbstar.service.CartService;
 import com.kbstar.service.StudentService;
 import com.kbstar.utill.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +31,8 @@ public class AjaxImplController {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    CartService cartService;
 
     @RequestMapping("/getservertime")
     public Object getservertime(){
@@ -95,6 +99,18 @@ public class AjaxImplController {
         }
         if(student!=null){
             result = 1;
+        }
+        return result;
+    }
+
+    @RequestMapping("/cartimpl")
+    public Object cartimpl(Cart cart) throws Exception {
+        int result = 0;
+        String sId = cart.getStudentId();
+        int lId = cart.getLectureId();
+        if(cartService.thisCart(lId, sId) == null){
+            result = 1;
+            cartService.register(cart);
         }
         return result;
     }
