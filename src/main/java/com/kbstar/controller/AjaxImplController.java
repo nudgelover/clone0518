@@ -98,4 +98,5 @@ public class AjaxImplController {
         }
         return result;
     }
+
 }

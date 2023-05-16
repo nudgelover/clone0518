@@ -4,15 +4,25 @@ import com.kbstar.dto.Student;
 import com.kbstar.service.LectureService;
 import com.kbstar.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 @Slf4j
@@ -31,6 +41,9 @@ public class MainController {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+    @Value("${download.path}")
+    String downloadPath;
+
     @RequestMapping("/")
     public String main(Model model) throws Exception {
 
@@ -42,7 +55,6 @@ public class MainController {
         model.addAttribute("center", "apply");
         return "index";
     }
-
     @RequestMapping("/courses")
     public String courses(Model model) throws Exception {
         model.addAttribute("center", "courses");
@@ -92,7 +104,7 @@ public class MainController {
 
         try {
             student = studentService.get(id);
-            if (student != null && encoder.matches(pwd, student.getPwd())) {
+            if(student != null && encoder.matches(pwd,student.getPwd())){
                 nextPage = "center";
                 session.setMaxInactiveInterval(12000000);
                 session.setAttribute("loginStudent", student);
@@ -115,7 +127,7 @@ public class MainController {
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model, int contact1, int contact2, int contact3, Student student, HttpSession session) throws Exception {
         try {
-            String contact = "0" + contact1 + contact2 + contact3;
+            String contact = "0"+contact1+contact2+contact3;
             student.setPwd(encoder.encode(student.getPwd()));
             student.setContact(contact);
             studentService.register(student);
@@ -130,12 +142,26 @@ public class MainController {
 
     @RequestMapping("/logout")
     public String logout(Model model, HttpSession session) throws Exception {
-        if (session != null) {
+        if(session != null){
             session.invalidate();
         }
         return "redirect:/";
     }
 
+    @GetMapping("/download/{filename}")
+    public ResponseEntity<byte[]> downloadFile(@PathVariable("filename") String filename, HttpServletRequest request) throws IOException {
+        String filePath = downloadPath; // 파일이 저장된 경로
+
+        // 파일 경로 생성
+        Path file = Paths.get(filePath, filename);
+
+        // 파일을 ByteArray로 변환하여 ResponseEntity에 담아 반환
+        byte[] fileContent = Files.readAllBytes(file);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentDispositionFormData("attachment", filename);
+        return ResponseEntity.ok().headers(headers).body(fileContent);
+    }
 
     @RequestMapping("/mypage")
     public String mypage(Model model, String id) throws Exception {
@@ -161,4 +187,6 @@ public class MainController {
         model.addAttribute("center", "digi_members");
         return "index";
     }
+
+
 }

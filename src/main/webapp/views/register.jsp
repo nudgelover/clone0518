@@ -13,7 +13,7 @@
     }
 
     #register_container {
-        padding-top: 150px;
+        padding-top: 120px;
     }
 
     #register_row {
@@ -23,7 +23,7 @@
     }
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     input[type="text"],
@@ -96,7 +96,6 @@
     .form-group p {
         text-align: center;
     }
-
 </style>
 
 <script>
@@ -227,7 +226,6 @@
         register_form.init();
     });
 </script>
-
 <section class="section main-banner" id="top" data-section="section1">
     <video autoplay muted loop id="bg-video">
         <source src="/assets/images/course-video.mp4" type="video/mp4"/>

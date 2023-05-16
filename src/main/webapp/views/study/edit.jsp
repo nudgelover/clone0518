@@ -31,7 +31,8 @@
     input[type="password"],
     input[type="number"],
     input[type="email"],
-    input[type="datetime-local"] {
+    input[type="datetime-local"],
+    textarea {
         height: 50px;
         border-style: none;
         border-radius: 30px;
@@ -47,7 +48,8 @@
     input[type="password"]:focus,
     input[type="number"]:focus,
     input[type="email"]:focus,
-    input[type="button"]:focus {
+    input[type="button"]:focus,
+    textarea:focus {
         background-color: rgb(53, 53, 53);
         color: rgb(227, 227, 227);
         box-shadow: none;
@@ -67,12 +69,7 @@
         text-align: center;
     }
 
-    input[type="number"] {
-        width: 33%;
-        display: inline-block;
-    }
-
-    #upload_btn {
+    #edit_btn {
         margin-top: 20px;
         height: 50px;
         border-style: none;
@@ -106,15 +103,33 @@
         display: none;
     }
 
+    input[type="datetime-local"] {
+        content: attr(data-placeholder);
+    }
+
     input[type="file"]::file-selector-button {
         display: none;
     }
 
-    input[type="file"]::placeholder {
-        text-align: center;
-        line-height: normal;
-        padding: 0;
-        vertical-align: middle;
+    #contents {
+        border-style: none;
+        border-radius: 30px;
+        background-color: rgb(53, 53, 53);
+        color: rgb(227, 227, 227);
+        padding-left: 30px;
+    }
+
+    #contents:hover {
+        background-color: rgb(53, 53, 53);
+        color: rgb(227, 227, 227);
+        box-shadow: none;
+        outline: none;
+        border: 1px solid #fff;
+    }
+
+    #contents:focus {
+        outline: none;
+        box-shadow: none;
     }
 
     .edit_label {
@@ -126,33 +141,29 @@
         margin-bottom: 10px;
     }
 
-
-
 </style>
 
 <script>
-    let study_write = {
-        init: function () {
-
-            $('#upload_btn').click(function () {
-                study_write.send();
+    let study_edit = {
+        init:function (){
+            $('#edit_btn').click(function (){
+                study_edit.send();
             });
         },
-        send: function () {
-            $('#study_upload').attr({
-                method: 'post',
-                action: '/study/writeimpl',
+        send:function (){
+            $('#study_edit').attr({
+                method:'post',
+                action:'/study/editimpl',
                 enctype: 'multipart/form-data'
             });
-            $('#study_upload').submit();
+            $('#study_edit').submit();
         }
     };
-    $(function () {
-        study_write.init();
+    $(function (){
+        study_edit.init();
     });
-
-
 </script>
+
 
 <section class="section main-banner" id="top" data-section="section1">
     <video autoplay muted loop id="bg-video">
@@ -164,11 +175,13 @@
                 <div class="col-lg-6 align-self-center" id="register_row">
                     <div class="col-lg-12">
                         <div class="item">
-                            <h3>UPLOAD STUDY JOURNAL</h3>
-                            <form id="study_upload">
+                            <h3>EDIT YOUR STUDY JOURNAL</h3>
+                            <form id="study_edit">
                                 <div class="form-group">
+                                    <input type="hidden" name="id" class="form-control" id="id"
+                                           value="${study.id}">
                                     <input type="hidden" name="studentId" class="form-control" id="studentId"
-                                           value="${loginStudent.id}">
+                                           value="${study.studentId}">
                                 </div>
                                 <div class="form-group">
                                     <div style="width:50%; float:left;">
@@ -185,17 +198,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <span class="edit_label">Select File</span>
+                                    <span class="edit_label">Select File (Original: ${study.fileName_org} )</span>
                                     <input type="file" name="file" class="form-control" id="file">
                                 </div>
                                 <div class="form-group">
                                     <span class="edit_label">Study Summary</span>
                                     <input type="text" name="contents" class="form-control" id="contents"
                                            placeholder="CONTENTS"
-                                           autocomplete="off">
+                                           autocomplete="off" value="${study.contents}">
                                 </div>
+
                                 <div class="form-group">
-                                    <input type="submit" class="form-control" id="upload_btn" value="UPLOAD">
+                                    <input type="button" class="form-control" id="edit_btn" value="edit">
                                 </div>
                                 <div class="form-group" id="button-group">
                                     <p>
