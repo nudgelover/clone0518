@@ -3,8 +3,6 @@ package com.kbstar.dto;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @ToString
@@ -21,10 +19,16 @@ public class Mypage {
     private String insta;
     private String facebook;
     private String mbti;
-    private Date com_sdate;
-    private Date digi_sdate;
+    private String com_sdate;
+    private String digi_sdate;
 
 
     private MultipartFile imgfile;
 
+    public Mypage(String id, String mbti, String com_sdate, String digi_sdate) {
+        this.id = id;
+        this.mbti = mbti;
+        this.com_sdate = com_sdate;
+        this.digi_sdate = digi_sdate;
+    }
 }

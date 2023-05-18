@@ -15,7 +15,7 @@
         VALUES (#{id},#{pwd},#{name},#{email},#{contact})
     </insert>
     <update id="update" parameterType="student">
-        UPDATE student SET pwd=#{pwd}, name=#{name}, detail=#{detail}
+        UPDATE student SET name=#{name}, detail=#{detail}
                         , email=#{email}, contact=#{contact}, img=#{img}
                         WHERE id=#{id}
     </update>

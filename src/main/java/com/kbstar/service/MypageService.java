@@ -1,7 +1,6 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.Mypage;
-import com.kbstar.dto.Student;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.MypageMapper;
 import org.springframework.beans.factory.annotation.Autowired;

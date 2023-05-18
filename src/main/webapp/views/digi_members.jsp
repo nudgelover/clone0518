@@ -145,7 +145,9 @@
             <div class="col-lg-12 align-self-center">
                 <div class="item">
                     <h3>Digi Members</h3>
-                    <span>페이스북, 인스타아이디, email, phone</span>
+                    <span>Digi1기냐 2기 따로따로 검색
+                    edit 박스 digi입과날짜를 radio..?체크박스로 바꿔서 그 체크박스에 value를 날짜로 받아서 ...!
+                    그 날짜에 따라서 바꿔야겠다.</span>
                 </div>
 
                 <div class="item">

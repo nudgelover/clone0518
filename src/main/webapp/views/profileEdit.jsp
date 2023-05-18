@@ -8,24 +8,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>DIGI CAM | MY PAGE</title>
+    <title>DIGI CAM |${student.name}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
 
-    <!-- Facebook and Twitter integration -->
-    <%--    <meta property="og:title" content=""/>--%>
-    <%--    <meta property="og:image" content=""/>--%>
-    <%--    <meta property="og:url" content=""/>--%>
-    <%--    <meta property="og:site_name" content=""/>--%>
-    <%--    <meta property="og:description" content=""/>--%>
-    <%--    <meta name="twitter:title" content=""/>--%>
-    <%--    <meta name="twitter:image" content=""/>--%>
-    <%--    <meta name="twitter:url" content=""/>--%>
-    <%--    <meta name="twitter:card" content=""/>--%>
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
@@ -50,6 +38,7 @@
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="/js/respond.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <![endif]-->
     <style>
         #digicam {
@@ -62,7 +51,67 @@
             z-index: 1020;
         }
 
+        h1, h2, h3, h4, h5, #colorlib-logo {
+            font-family: "Quicksand", Arial, sans-serif;
+        }
+
+        #preview {
+            border-radius: 50%;
+            width: 230px;
+            height: 230px;
+            margin: 0 50px 25px 50px;
+        }
+
+        .date_radio {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px
+        }
     </style>
+    <script>
+        let profileEdit = {
+            init: function () {
+                document.getElementById('update_btn').addEventListener('click', function () {
+                    // alert("hi");
+                    profileEdit.send();
+                });
+                // document.getElementById('pwd2').addEventListener('keyup', function () {
+                //     var pwd1 = document.getElementById('pwd').value;
+                //     var pwd2 = this.value;
+                //     if (pwd1 == pwd2) {
+                //         document.getElementById('check_pwd').textContent = '비밀번호가 일치합니다.';
+                //     } else {
+                //         document.getElementById('check_pwd').textContent = '비밀번호가 일치하지 않습니다.';
+                //     }
+                // });
+            },
+            send: function () {
+                document.getElementById('profile_form').setAttribute('method', 'post');
+                document.getElementById('profile_form').setAttribute('action', '/student/updateimpl');
+                document.getElementById('profile_form').setAttribute('enctype', 'multipart/form-data');
+                document.getElementById('profile_form').submit();
+            },
+        };
+
+        window.addEventListener('DOMContentLoaded', function () {
+            profileEdit.init();
+        });
+    </script>
+    <script>
+        // 파일 미리보기 해주는 스크립트
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('preview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('preview').src = "";
+            }
+        }
+    </script>
+
 </head>
 <body>
 <a href="/">
@@ -74,8 +123,8 @@
         <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
             <div class="text-center">
                 <div class="author-img"
-                     style="background-image: url('https://ca.slack-edge.com/T04HWDY9NPM-U04LTGAEQ5P-976b9c40207e-512')"></div>
-                <h1 id="colorlib-logo"><a href="index.html">Jackson Ford</a></h1>
+                     style="background-image: url('/uimg/${student.img}') "></div>
+                <h1 id="colorlib-logo"><a href="/mypage">${student.name}</a></h1>
                 <span class="position">KB KOOKMIN BANK DIGI CAM 2TH </span>
             </div>
         </aside>
@@ -90,53 +139,99 @@
                             <h2 class="colorlib-heading">Profile Edit</h2>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img style="width: 300px; margin: 20px;"
-                                 src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png">
-                            <div class="form-group">
-                                <input type="file" id="profile_img" class="form-control" placeholder="profile image...">
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-md-push-1">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box"
-                                     data-animate-effect="fadeInRight">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <label>MBTI : </label>
-                                            <select>
-                                                <option>MBIT</option>
-                                                <option>ENFP</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea name="" id="introduction" cols="30" rows="7" class="form-control"
-                                                      placeholder="introduction"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Subject">
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea name="" id="message" cols="30" rows="7" class="form-control"
-                                                      placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-send-message"
-                                                   value="EDIT">
-                                        </div>
-                                    </form>
+                    <form id="profile_form" action="">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div id="preview_box"><img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+                                                           id="preview"/></div>
+                                <div class="form-group">
+                                    <label>PROFILE IMG : </label>
+                                    <input type="hidden" id="id" name="id" value="${student.id}">
+                                    <input type="hidden" id="name" name="name" value="${student.name}">
+                                    <input type="hidden" id="img" name="img" value="${student.img}">
+                                    <input type="file" class="form-control"
+                                           id="imgfile" name="imgfile" onchange="readURL(this)"
+                                           placeholder="Profile image">
+
                                 </div>
 
+
+                                <div class="form-group">
+                                    <label>WITH KB : </label> <input type="date" name="com_sdate" id="com_sdate"
+                                                                     class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>WITH DIGI : </label>
+                                    <div class="date_radio">
+                                        <input type="radio" name="digi_sdate" value="220201">Digi Campus 1기
+                                        <input type="radio" name="digi_sdate" value="230201">Digi Campus 2기
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>MBTI :</label>
+                                    <select class="form-control" id="mbti" name="mbti">
+                                        <option>ISTJ</option>
+                                        <option>ISFJ</option>
+                                        <option>INFJ</option>
+                                        <option>INTJ</option>
+                                        <option>ISTP</option>
+                                        <option>ISFP</option>
+                                        <option>INFP</option>
+                                        <option>INTP</option>
+                                        <option>ESTP</option>
+                                        <option>ESFP</option>
+                                        <option>ENFP</option>
+                                        <option>ENTP</option>
+                                        <option>ESTJ</option>
+                                        <option>ESFJ</option>
+                                        <option>ENFJ</option>
+                                        <option>ENTJ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-md-push-1">
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box"
+                                         data-animate-effect="fadeInRight">
+<%--                                        <div class="form-group">--%>
+<%--&lt;%&ndash;                                            <input type="hidden" name="pwd" value="${student.pwd}" }>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <input type="password" name="pwd" id="pwd" class="form-control"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                                   placeholder="Please enter your password.">&ndash;%&gt;--%>
+<%--                                        </div>--%>
+                                        <div class="form-group">
+                                            <textarea style="resize: none;" name="detail" id="detail" cols="30" rows="7"
+                                                      class="form-control"
+                                                      placeholder="Please provide an introduction about yourself.">${student.detail}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" class="form-control"
+                                                   value="${student.email}" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" name="contact" id="contact" class="form-control"
+                                                   value="${student.contact}" placeholder="Contact">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="facebook" id="facebook" class="form-control"
+                                                   value="${student.facebook}" placeholder="Facebook ID...">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" name="insta" id="insta" class="form-control"
+                                                   value="${student.insta}" placeholder="Instagram ID...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="update_btn" type="button"
+                                                   class="btn btn-primary btn-send-message"
+                                                   value="EDIT">
+                                        </div>
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
 

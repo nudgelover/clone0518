@@ -7,11 +7,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Locale;
 
 @Slf4j
@@ -29,11 +33,11 @@ class SelectIDTest {
             LocalDate today = LocalDate.now(ZoneId.of("Asia/Seoul"));
 
             // Digi의 시작일을 가져옵니다.
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-            LocalDate digiStart = LocalDate.parse(mypage.getDigi_sdate().toString(), formatter);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date digiStart = formatter.parse(mypage.getDigi_sdate());
 
             // 현재 날짜와 Digi의 시작일을 비교하여 d-day를 계산합니다.
-            long daysBetween = ChronoUnit.DAYS.between(today, digiStart);
+            long daysBetween = ChronoUnit.DAYS.between(today, digiStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             String dDay = (daysBetween > 0) ? "D-" + daysBetween : "D+" + Math.abs(daysBetween);
 
             // 결과를 출력합니다.

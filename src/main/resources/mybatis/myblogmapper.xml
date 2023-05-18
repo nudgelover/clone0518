@@ -5,28 +5,27 @@
 <mapper namespace="com.kbstar.mapper.MyblogMapper">
 
     <select id="select" parameterType="string" resultType="myblog">
-        --         SELECT *
---         FROM student s
---         JOIN myblog b
---         ON s.id = b.stu_id
---         WHERE s.id=#{id}
+
     </select>
 
-    <insert id="insert" parameterType="student">
-        --         INSERT INTO student (id, pwd, name, email, contact)
---         VALUES (#{id},#{pwd},#{name},#{email},#{contact})
+    <insert id="insert" parameterType="myblog">
+        INSERT INTO myblog (id, stu_id, title, contents, rdate)
+        VALUES (myblog_seq.NEXTVAL, #{stu_id}, #{title}, #{contents}, SYSDATE)
     </insert>
-    <update id="update" parameterType="student">
-        --         UPDATE student SET pwd=#{pwd}, name=#{name}, detail=#{detail}
+
+    <update id="update" parameterType="myblog">
+        --                 UPDATE student SET pwd=#{pwd}, name=#{name}, detail=#{detail}
 --                         , email=#{email}, contact=#{contact}, img=#{img}
 --                         WHERE id=#{id}
     </update>
-    <delete id="delete" parameterType="string">
-        --         DELETE FROM student WHERE ID=#{id}
+    <delete id="delete" parameterType="Integer">
+        DELETE
+        FROM myblog
+        WHERE ID = #{id}
     </delete>
 
     <select id="getMyBlog" parameterType="string" resultType="myblog">
-        SELECT s.name, b.id, b.stu_id, b.title,b.contents,b.rdate
+        SELECT s.name, b.id, b.stu_id, b.title, b.contents, b.rdate
         FROM student s
                  JOIN myblog b
                       ON s.id = b.stu_id

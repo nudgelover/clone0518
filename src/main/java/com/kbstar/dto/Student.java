@@ -29,21 +29,8 @@ public class Student {
         this.contact = contact;
     }
 
-
-    public Student(String id, String pwd, String name, String detail, String email, String contact, String img) {
+    public Student(String id, String detail, String email, String contact, String img, String insta, String facebook) {
         this.id = id;
-        this.pwd = pwd;
-        this.name = name;
-        this.detail = detail;
-        this.email = email;
-        this.contact = contact;
-        this.img = img;
-    }
-
-    public Student(String id, String pwd, String name, String detail, String email, String contact, String img, String insta, String facebook) {
-        this.id = id;
-        this.pwd = pwd;
-        this.name = name;
         this.detail = detail;
         this.email = email;
         this.contact = contact;
@@ -51,5 +38,4 @@ public class Student {
         this.insta = insta;
         this.facebook = facebook;
     }
-
 }

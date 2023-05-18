@@ -1,7 +1,11 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Myblog;
+import com.kbstar.dto.Mypage;
 import com.kbstar.dto.Student;
 import com.kbstar.service.LectureService;
+import com.kbstar.service.MyblogService;
+import com.kbstar.service.MypageService;
 import com.kbstar.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -23,7 +27,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 @Slf4j
 @Controller
@@ -37,6 +45,12 @@ public class MainController {
 
     @Autowired
     StudentService studentService;
+
+    @Autowired
+    MypageService mypageService;
+
+    @Autowired
+    MyblogService myblogService;
 
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -55,6 +69,7 @@ public class MainController {
         model.addAttribute("center", "apply");
         return "index";
     }
+
     @RequestMapping("/courses")
     public String courses(Model model) throws Exception {
         model.addAttribute("center", "courses");
@@ -104,7 +119,7 @@ public class MainController {
 
         try {
             student = studentService.get(id);
-            if(student != null && encoder.matches(pwd,student.getPwd())){
+            if (student != null && encoder.matches(pwd, student.getPwd())) {
                 nextPage = "center";
                 session.setMaxInactiveInterval(12000000);
                 session.setAttribute("loginStudent", student);
@@ -125,12 +140,13 @@ public class MainController {
     }
 
     @RequestMapping("/registerimpl")
-    public String registerimpl(Model model, int contact1, int contact2, int contact3, Student student, HttpSession session) throws Exception {
+    public String registerimpl(Model model, int contact1, int contact2, int contact3, Student student, Mypage mypage, HttpSession session) throws Exception {
         try {
-            String contact = "0"+contact1+contact2+contact3;
+            String contact = "0" + contact1 + contact2 + contact3;
             student.setPwd(encoder.encode(student.getPwd()));
             student.setContact(contact);
             studentService.register(student);
+            mypageService.register(mypage);
             session.setAttribute("loginStudent", student);
         } catch (Exception e) {
             throw new Exception("시스템 장애: ER0006");
@@ -142,7 +158,7 @@ public class MainController {
 
     @RequestMapping("/logout")
     public String logout(Model model, HttpSession session) throws Exception {
-        if(session != null){
+        if (session != null) {
             session.invalidate();
         }
         return "redirect:/";
@@ -164,15 +180,50 @@ public class MainController {
     }
 
     @RequestMapping("/mypage")
-    public String mypage(Model model, String id) throws Exception {
+    public String mypage(Model model, String id, HttpSession session) throws Exception {
+        Mypage mypage = null;
+        List<Myblog> list = null;
+        String dDay = null;
+
+        try {
+            Student loginStudent = (Student) session.getAttribute("loginStudent");
+            mypage = mypageService.get(loginStudent.getId());
+            list = myblogService.getMyBlog(loginStudent.getId());
+
+            LocalDate today = LocalDate.now(ZoneId.of("Asia/Seoul"));
+
+            // Digi의 시작일을 가져옵니다.
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date digiStart = formatter.parse(mypage.getDigi_sdate());
+
+            // 현재 날짜와 Digi의 시작일을 비교하여 d-day를 계산합니다.
+            long daysBetween = ChronoUnit.DAYS.between(today, digiStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            dDay = (daysBetween > 0) ? "D-" + daysBetween : "D+" + Math.abs(daysBetween);
+
+
+            //comsdate과 digidate formatter
+            SimpleDateFormat comsdateformatter = new SimpleDateFormat("yyyy년 MM월 dd일");
+            Date comSdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(mypage.getCom_sdate());
+            String formattedComSdate = comsdateformatter.format(comSdate);
+            mypage.setCom_sdate(formattedComSdate);
+
+            SimpleDateFormat digisdateformatter = new SimpleDateFormat("yyyy년 MM월 dd일");
+            Date digiSdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(mypage.getDigi_sdate());
+            String formattedDigiSdate = digisdateformatter.format(digiSdate);
+            mypage.setDigi_sdate(formattedDigiSdate);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e.getMessage());
+        }
+
+        model.addAttribute("student", mypage);
+        model.addAttribute("bloglist", list);
+        model.addAttribute("dday", dDay);
         return "mypage";
     }
 
-    @RequestMapping("/profile_edit")
-    public String profileEdit(Model model) throws Exception {
-
-        return "profileEdit";
-    }
 
     @RequestMapping("/digimembers")
     public String digimembers(Model model, Student student) throws Exception {
@@ -188,10 +239,5 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/mycourse1")
-    public String mycourse1(Model model) throws Exception {
-        model.addAttribute("center", "mycourse1");
-        return "index";
 
-    }
 }

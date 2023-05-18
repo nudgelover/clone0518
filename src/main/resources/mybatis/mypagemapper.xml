@@ -12,14 +12,16 @@
         WHERE s.id=#{id}
     </select>
 
-    <insert id="insert" parameterType="student">
---         INSERT INTO student (id, pwd, name, email, contact)
---         VALUES (#{id},#{pwd},#{name},#{email},#{contact})
+    <insert id="insert" parameterType="mypage">
+        INSERT INTO mypage (id)
+        VALUES (#{id})
     </insert>
-    <update id="update" parameterType="student">
---         UPDATE student SET pwd=#{pwd}, name=#{name}, detail=#{detail}
---                         , email=#{email}, contact=#{contact}, img=#{img}
---                         WHERE id=#{id}
+    <update id="update" parameterType="mypage">
+        UPDATE mypage
+        SET mbti       =#{mbti},
+            com_sdate  = TO_DATE(#{com_sdate}, 'YY-MM-DD'),
+            digi_sdate = TO_DATE(#{digi_sdate}, 'YY-MM-DD')
+        WHERE id = #{id}
     </update>
     <delete id="delete" parameterType="string">
 --         DELETE FROM student WHERE ID=#{id}

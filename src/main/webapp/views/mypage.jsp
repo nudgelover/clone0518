@@ -8,24 +8,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>DIGI CAM | MY PAGE</title>
+    <title>DIGI CAM |${student.name}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
 
-    <!-- Facebook and Twitter integration -->
-    <%--    <meta property="og:title" content=""/>--%>
-    <%--    <meta property="og:image" content=""/>--%>
-    <%--    <meta property="og:url" content=""/>--%>
-    <%--    <meta property="og:site_name" content=""/>--%>
-    <%--    <meta property="og:description" content=""/>--%>
-    <%--    <meta name="twitter:title" content=""/>--%>
-    <%--    <meta name="twitter:image" content=""/>--%>
-    <%--    <meta name="twitter:url" content=""/>--%>
-    <%--    <meta name="twitter:card" content=""/>--%>
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
@@ -62,7 +50,51 @@
             z-index: 1020;
         }
 
+        #stuimg {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        h1, h2, h3, h4, h5, #colorlib-logo {
+            font-family: "Quicksand", Arial, sans-serif;
+        }
+
+        .icon-trash2:hover {
+            cursor: pointer;
+            opacity: 50%;
+        }
+
     </style>
+    <script>
+        let myblog = {
+            init: function () {
+                document.getElementById('postblog').addEventListener('click', function () {
+                    myblog.send();
+                });
+                document.getElementById('delete_btn').addEventListener('click', function () {
+                    if (confirm("삭제하시겠습니까?")) {
+                        var id = this.getAttribute('data-id');
+                        location.href = "/student/blogdelete?id=" + id;
+                    }
+                });
+            },
+            send: function () {
+                document.getElementById('blog_form').setAttribute('method', 'post');
+                document.getElementById('blog_form').setAttribute('action', '/student/blogimpl');
+                document.getElementById('blog_form').submit();
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', function () {
+            myblog.init();
+        });
+    </script>
 </head>
 <body>
 <a href="/">
@@ -74,10 +106,20 @@
         <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
             <div class="text-center">
                 <div class="text-center">
-                    <div class="author-img" style="background-image: url('https://ca.slack-edge.com/T04HWDY9NPM-U04LTGAEQ5P-976b9c40207e-512')"></div>
-                    <h1 id="colorlib-logo">Jackson Ford</h1>
-                    <a href="/profile_edit">Edit<img width="10px" src="https://cdn-icons-png.flaticon.com/512/650/650143.png"></a>
-                    <span class="position">KB KOOKMIN BANK DIGI CAM 2TH </span>
+                    <div class="author-img"><img id="stuimg" src="/uimg/${student.img}"></div>
+                    <h1 id="colorlib-logo">${student.name}</h1>
+                    <a href="/student/profile_edit">Edit<img width="10px"
+                                                             src="https://cdn-icons-png.flaticon.com/512/650/650143.png"></a>
+                    <span class="position">
+                       <c:choose>
+                           <c:when test="${student.digi_sdate == '2022년 02월 01일'}">
+                               KB KOOKMIN BANK DIGI CAM 1TH
+                           </c:when>
+                           <c:when test="${student.digi_sdate =='2023년 02월 01일'}">
+                               KB KOOKMIN BANK DIGI CAM 2TH
+                           </c:when>
+                       </c:choose>
+                    </span>
                 </div>
             </div>
             <nav id="colorlib-main-menu" role="navigation" class="navbar">
@@ -85,12 +127,8 @@
                     <ul>
                         <li class="active"><a href="#" data-nav-section="home">Home</a></li>
                         <li><a href="#" data-nav-section="about">About</a></li>
-                        <li><a href="#" data-nav-section="services">Services</a></li>
-                        <li><a href="#" data-nav-section="skills">Skills</a></li>
-                        <li><a href="#" data-nav-section="education">Education</a></li>
-                        <li><a href="#" data-nav-section="experience">Experience</a></li>
-                        <li><a href="#" data-nav-section="work">Work</a></li>
-                        <li><a href="#" data-nav-section="blog">Blog</a></li>
+                        <li><a href="#" data-nav-section="skills">skills</a></li>
+                        <li><a href="#" data-nav-section="blog">blog</a></li>
                         <li><a href="#" data-nav-section="contact">Contact</a></li>
                     </ul>
                 </div>
@@ -98,10 +136,33 @@
 
             <div class="colorlib-footer">
                 <ul>
-                    <li><a href="#"><i class="icon-facebook2"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter2"></i></a></li>
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin2"></i></a></li>
+                    <c:choose>
+                        <c:when test="${student.facebook==null}">
+                            <li>
+                                <a href="https://www.facebook.com/"><img style="width: 20px;"
+                                                                         src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+                                </a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <a href="https://www.facebook.com/${student.facebook}"><img style="width: 20px;"
+                                                                                            src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+                                </a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${student.insta==null}">
+                            <li><a href="https://www.instagram.com/"><img style="width: 20px;"
+                                                                          src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="https://www.instagram.com/${student.insta}"><img style="width: 20px;"
+                                                                                          src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
 
@@ -111,28 +172,170 @@
             <section id="colorlib-hero" class="js-fullheight" data-section="home">
                 <div class="flexslider js-fullheight">
                     <ul class="slides">
-                        <li style="background-image: url('/images/img_bg_1.jpg');">
-                            <div class="overlay"></div>
+                        <li style="background-image: url('/uimg/${student.img}');">
+                            <div class="overlay"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color:whitesmoke; opacity: 0.4;"></div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
                                         <div class="slider-text-inner js-fullheight">
                                             <div class="desc">
-                                                <h1>Hi! <br>I'm Jackson</h1>
+                                                <h1>Hi! <br>I'm ${student.name}</h1>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li style="background-image: url(/images/img_bg_2.jpg);">
-                            <div class="overlay"></div>
+                        <li style="background-image: url('https://mblogthumb-phinf.pstatic.net/MjAyMDA2MTlfMSAg/MDAxNTkyNTQ2NjkwMzM3.o-kBMGXmdu8jHwRvkOHIz1ZOXwlWtPCeP_YCOdlraDIg.fwYx9rhYfRXAuZnYJXHQE53gCyNQn4YdnaMyJ8x4Udog.JPEG.21kwc/ti246a6902.jpg?type=w800');">
+                            <div class="overlay"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color:whitesmoke; opacity: 0.7;"></div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
                                         <div class="slider-text-inner">
                                             <div class="desc">
-                                                <h1>I am <br>ENFP</h1>
+                                                <c:choose>
+                                                    <c:when test="${student.mbti==null}">
+                                                        <h1>Let me know your MBTI</h1>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <h1>I am <br>${student.mbti}</h1>
+                                                    </c:otherwise>
+                                                </c:choose>
+
+                                                <h2 style="font-size: 30px; font-weight: bold">
+                                                    <c:if test="${student.mbti == 'ISTJ'}">
+                                                        Practical, logical, <br>and efficient
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ISFJ'}">
+                                                        Caring, dependable, <br>and responsible
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INFJ'}">
+                                                        Insightful, creative, <br>and decisive
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INTJ'}">
+                                                        Strategic, innovative, <br>and independent
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ISTP'}">
+                                                        Adventurous, logical, <br>and h<br>ands-on
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ISFP'}">
+                                                        Sensitive, creative, <br>and caring
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INFP'}">
+                                                        Idealistic, empathetic, <br>and authentic
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INTP'}">
+                                                        Logical, innovative, <br>and independent
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESTP'}">
+                                                        Energetic, practical, <br>and adaptable
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESFP'}">
+                                                        Playful, social, <br>and expressive
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENFP'}">
+                                                        Enthusiastic, creative, <br>and sociable
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENTP'}">
+                                                        Inventive, curious, <br>and logical
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESTJ'}">
+                                                        Efficient, practical, <br>and authoritative
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESFJ'}">
+                                                        Friendly, caring, <br>and sociable
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENFJ'}">
+                                                        Charismatic, empathetic, <br>and decisive
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENTJ'}">
+                                                        Strategic, confident, <br>and assertive
+                                                    </c:if>
+                                                    <!-- Add more conditions for other personality types -->
+                                                </h2>
+                                                <p>
+                                                    <c:if test="${student.mbti == 'ISTJ'}">
+                                                        I am a responsible, organized, and dependable individual who prefers to work within established structures and frameworks.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ISFJ'}">
+                                                        I am a supportive and considerate individual who values traditions and is committed to helping others.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INFJ'}">
+                                                        I am a highly intuitive and empathetic individual who is dedicated to making a positive impact on the world.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INTJ'}">
+                                                        I am an analytical and logical individual who has a talent for developing innovative ideas and strategies.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ISTP'}">
+                                                        I am a spontaneous, action-oriented individual who enjoys working with my hands and solving problems in practical ways.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ISFP'}">
+                                                        I am a gentle and imaginative individual who enjoys creating beauty and harmony in my surroundings.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INFP'}">
+                                                        I am a compassionate and creative individual who strives to live my life in accordance with my values and beliefs.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'INTP'}">
+                                                        I am an analytical and curious individual who enjoys exploring new ideas and theories.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESTP'}">
+                                                        I am an outgoing and spontaneous individual who thrives on excitement and adventure.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESFP'}">
+                                                        I am a fun-loving and charismatic individual who enjoys entertaining and being around other people.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENFP'}">
+                                                        I am a passionate and imaginative individual who is driven by a desire to explore and understand the world around me.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENTP'}">
+                                                        I am an analytical and outgoing individual who enjoys debating and challenging conventional wisdom.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESTJ'}">
+                                                        I am a strong-willed and decisive individual who is well-suited to leadership roles.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ESFJ'}">
+                                                        I am a warm and considerate individual who is committed to building strong relationships with others.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENFJ'}">
+                                                        I am a natural leader who is highly attuned to the needs of others and is skilled at motivating and inspiring people.
+                                                    </c:if>
+
+                                                    <c:if test="${student.mbti == 'ENTJ'}">
+                                                        I am a decisive and goal-oriented individual who has a talent for leading and organizing people and resources
+                                                    </c:if>
+
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -152,48 +355,52 @@
                                     <div class="about-desc">
                                         <span class="heading-meta">About Us</span>
                                         <h2 class="colorlib-heading">Who Am I?</h2>
-                                        <p><strong>Hi I'm Jackson Ford</strong> On her way she met a copy. The copy
-                                            warned the Little Blind Text, that where it came from it would have been
-                                            rewritten a thousand times and everything that was left from its origin
-                                            would be the word "and" and the Little Blind Text should turn around and
-                                            return to its own, safe country.</p>
-                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an
-                                            almost unorthographic life One day however a small line of blind text by the
-                                            name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                        <p><strong>Hi I'm ${student.name}</strong>
+                                            <c:choose>
+                                            <c:when test="${student.detail==null}">
+                                        </p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <br>${student.detail}</p>
+                                        </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="services color-1">
-                                        <span class="icon2"><i class="icon-bulb"></i></span>
-                                        <h3>Graphic Design</h3>
+                                    <div class="services color-3">
+                                        <span class="icon2"><i class="icon-star2"></i></span>
+
+                                        <h3>WITH KB⭐<br>${student.com_sdate}</h3>
+
                                     </div>
                                 </div>
                                 <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
-                                    <div class="services color-2">
-                                        <span class="icon2"><i class="icon-globe-outline"></i></span>
-                                        <h3>Web Design</h3>
+                                    <div class="services color-1">
+                                        <span class="icon2"><i class="icon-monitor"></i></span>
+                                        <h3>WITH DIGI🖱️<br>${student.digi_sdate}</h3>
                                     </div>
+
                                 </div>
                                 <div class="col-md-3 animate-box" data-animate-effect="fadeInTop">
-                                    <div class="services color-3">
-                                        <span class="icon2"><i class="icon-data"></i></span>
-                                        <h3>Software</h3>
+                                    <div class="services color-2">
+                                        <span class="icon2"><i class="icon-mail5"></i></span>
+                                        <h3 style="word-wrap:break-word;">${student.email}</h3>
                                     </div>
                                 </div>
                                 <div class="col-md-3 animate-box" data-animate-effect="fadeInBottom">
                                     <div class="services color-4">
                                         <span class="icon2"><i class="icon-phone3"></i></span>
-                                        <h3>Application</h3>
+                                        <h3><br>${student.contact}</h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                                     <div class="hire">
-                                        <h2>I am happy to know you <br>that 300+ projects done sucessfully!</h2>
-                                        <a href="#" class="btn-hire">Hire me</a>
+                                        <h2>I am happy to know you<br>DIGI CAM과 함께한 지 ${dday} ING...♥ </h2>
+
                                     </div>
                                 </div>
                             </div>
@@ -203,79 +410,84 @@
             </section>
 
 
-            <section class="colorlib-services" data-section="services">
+            <section class="colorlib-services" data-section="skills">
                 <div class="colorlib-narrow-content">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
                              data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">What I do?</span>
-                            <h2 class="colorlib-heading">Here are some of my expertise</h2>
+                            <span class="heading-meta">What I've Learned</span>
+                            <h2 class="colorlib-heading">Here are some of program languages that we learned</h2>
                         </div>
                     </div>
                     <div class="row row-pt-md">
                         <div class="col-md-4 text-center animate-box">
-                            <div class="services color-1">
-								<span class="icon">
-									<i class="icon-bulb"></i>
-								</span>
-                                <div class="desc">
-                                    <h3>Innovative Ideas</h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center animate-box">
                             <div class="services color-2">
-								<span class="icon">
-									<i class="icon-data"></i>
-								</span>
+        								<span class="icon">
+                                            <img width="50px"
+                                                 src="https://cdn-icons-png.flaticon.com/512/1240/1240981.png">
+        								</span>
                                 <div class="desc">
-                                    <h3>Software</h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                                    <h3>FRONT</h3>
+                                    <p>HTML&CSS</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 text-center animate-box">
                             <div class="services color-3">
-								<span class="icon">
-									<i class="icon-phone3"></i>
-								</span>
+        								<span class="icon">
+        									<img width="50px"
+                                                 src="https://cdn-icons-png.flaticon.com/512/1199/1199124.png">
+        								</span>
                                 <div class="desc">
-                                    <h3>Application</h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                                    <h3>FRONT</h3>
+                                    <p>Javascript</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center animate-box">
+                            <div class="services color-1">
+        								<span class="icon">
+        								<img width="50px" src="https://cdn-icons-png.flaticon.com/512/1125/1125008.png">
+        								</span>
+                                <div class="desc">
+                                    <h3>FRONT</h3>
+                                    <p>React</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 text-center animate-box">
                             <div class="services color-4">
-								<span class="icon">
-									<i class="icon-layers2"></i>
-								</span>
+        								<span class="icon">
+        										<img width="50px"
+                                                     src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png">
+        								</span>
                                 <div class="desc">
-                                    <h3>Graphic Design</h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                                    <h3>BACKEND</h3>
+                                    <p>Java</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 text-center animate-box">
                             <div class="services color-5">
-								<span class="icon">
-									<i class="icon-data"></i>
-								</span>
+        								<span class="icon">
+        										<img width="50px"
+                                                     src="https://dz2cdn1.dzone.com/storage/temp/12434118-spring-boot-logo.png">
+        								</span>
                                 <div class="desc">
-                                    <h3>Software</h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                                    <h3>BACKEND</h3>
+                                    <p>Spring Boot</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 text-center animate-box">
                             <div class="services color-6">
-								<span class="icon">
-									<i class="icon-phone3"></i>
-								</span>
+        								<span class="icon">
+        											<img width="50px"
+                                                         src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png">
+        								</span>
                                 <div class="desc">
-                                    <h3>Application</h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                                    <h3>BACKEND</h3>
+                                    <p>Node JS</p>
                                 </div>
                             </div>
                         </div>
@@ -291,243 +503,34 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="309" data-speed="5000"
-                                  data-refresh-interval="50"></span>
+                                    <span class="colorlib-counter js-counter" data-from="0" data-to="309"
+                                          data-speed="5000"
+                                          data-refresh-interval="50"></span>
                             <span class="colorlib-counter-label">Cups of coffee</span>
                         </div>
                         <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="356" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Projects</span>
+                                    <span class="colorlib-counter js-counter" data-from="0" data-to="24"
+                                          data-speed="5000"
+                                          data-refresh-interval="50"></span>
+                            <span class="colorlib-counter-label">Digi Members</span>
                         </div>
                         <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="30" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Clients</span>
+                                    <span class="colorlib-counter js-counter" data-from="0" data-to="4"
+                                          data-speed="5000"
+                                          data-refresh-interval="50"></span>
+                            <span class="colorlib-counter-label">Teachers</span>
                         </div>
                         <div class="col-md-3 text-center animate-box">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="10" data-speed="5000"
-                                  data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Partners</span>
+                                    <span class="colorlib-counter js-counter" data-from="0" data-to="2"
+                                          data-speed="5000"
+                                          data-refresh-interval="50"></span>
+                            <span class="colorlib-counter-label">Mentors</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <section class="colorlib-skills" data-section="skills">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">My Specialty</span>
-                            <h2 class="colorlib-heading animate-box">My Skills</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-                            <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild
-                                Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed
-                                her seven versalia, put her initial into the belt and made herself on the way.</p>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>Photoshop</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-1" role="progressbar" aria-valuenow="75"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:75%">
-                                        <span>75%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>jQuery</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-2" role="progressbar" aria-valuenow="60"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                                        <span>60%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>HTML5</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-3" role="progressbar" aria-valuenow="85"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:85%">
-                                        <span>85%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>CSS3</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-4" role="progressbar" aria-valuenow="90"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:90%">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="progress-wrap">
-                                <h3>WordPress</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                                        <span>70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="progress-wrap">
-                                <h3>SEO</h3>
-                                <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:80%">
-                                        <span>80%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="colorlib-education" data-section="education">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">Education</span>
-                            <h2 class="colorlib-heading animate-box">Education</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="fancy-collapse-panel">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                                   aria-expanded="true" aria-controls="collapseOne">Master Degree
-                                                    Graphic Design
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                                             aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <p>Far far away, behind the word mountains, far from the
-                                                            countries Vokalia and Consonantia, there live the blind
-                                                            texts. </p>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p>Separated they live in Bookmarksgrove right at the coast of
-                                                            the Semantics, a large language ocean.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseTwo" aria-expanded="false"
-                                                   aria-controls="collapseTwo">Bachelor Degree of Computer Science
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                <p>Far far away, behind the word <strong>mountains</strong>, far from
-                                                    the countries Vokalia and Consonantia, there live the blind texts.
-                                                    Separated they live in Bookmarksgrove right at the coast of the
-                                                    Semantics, a large language ocean.</p>
-                                                <ul>
-                                                    <li>Separated they live in Bookmarksgrove right</li>
-                                                    <li>Separated they live in Bookmarksgrove right</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingThree">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseThree" aria-expanded="false"
-                                                   aria-controls="collapseThree">Diploma in Information Technology
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingThree">
-                                            <div class="panel-body">
-                                                <p>Far far away, behind the word <strong>mountains</strong>, far from
-                                                    the countries Vokalia and Consonantia, there live the blind texts.
-                                                    Separated they live in Bookmarksgrove right at the coast of the
-                                                    Semantics, a large language ocean.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFour">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseFour" aria-expanded="false"
-                                                   aria-controls="collapseFour">Diploma in Information Technology
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingFour">
-                                            <div class="panel-body">
-                                                <p>Far far away, behind the word <strong>mountains</strong>, far from
-                                                    the countries Vokalia and Consonantia, there live the blind texts.
-                                                    Separated they live in Bookmarksgrove right at the coast of the
-                                                    Semantics, a large language ocean.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFive">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                   href="#collapseFive" aria-expanded="false"
-                                                   aria-controls="collapseFive">High School Secondary Education
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
-                                             aria-labelledby="headingFive">
-                                            <div class="panel-body">
-                                                <p>Far far away, behind the word <strong>mountains</strong>, far from
-                                                    the countries Vokalia and Consonantia, there live the blind texts.
-                                                    Separated they live in Bookmarksgrove right at the coast of the
-                                                    Semantics, a large language ocean.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="colorlib-experience" data-section="experience">
+            <section class="colorlib-experience" data-section="blog">
                 <div class="colorlib-narrow-content">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
@@ -539,6 +542,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="timeline-centered">
+
                                 <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
                                     <div class="timeline-entry-inner">
 
@@ -547,264 +551,59 @@
                                         </div>
 
                                         <div class="timeline-label">
-                                            <h2><a href="#">Full Stack Developer</a> <span>2017-2018</span></h2>
-                                            <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add
-                                                and offered prepare how cordial two promise. Greatly who affixed suppose
-                                                but enquire compact prepare all put. Added forth chief trees but rooms
-                                                think may.</p>
+                                            <form name="blog_form" id="blog_form">
+                                                <input type="hidden" name="stu_id" id="stu_id" value="${student.id}">
+                                                <input type="text" id="title" name="title" class="form-control"
+                                                       placeholder="title">
+                                                <textarea style="resize: none;" name="contents" id="contents" cols="30"
+                                                          rows="7"
+                                                          class="form-control"
+                                                          placeholder="contents"></textarea>
+                                                <input id="postblog" type="button"
+                                                       class="btn btn-primary btn-send-message"
+                                                       value="Submit">
+
+                                            </form>
                                         </div>
                                     </div>
                                 </article>
 
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-2">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Front End Developer at Google Company</a>
-                                                <span>2017-2018</span></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is
-                                                an almost unorthographic life One day however a small line of blind text
-                                                by the name of Lorem Ipsum decided to leave for the far World of
-                                                Grammar.</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-3">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">System Analyst</a> <span>2017-2018</span></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is
-                                                an almost unorthographic life One day however a small line of blind text
-                                                by the name of Lorem Ipsum decided to leave for the far World of
-                                                Grammar.</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-4">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">Creative Designer</a> <span>2017-2018</span></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is
-                                                an almost unorthographic life One day however a small line of blind text
-                                                by the name of Lorem Ipsum decided to leave for the far World of
-                                                Grammar.</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-5">
-                                            <i class="icon-pen2"></i>
-                                        </div>
-                                        <div class="timeline-label">
-                                            <h2><a href="#">UI/UX Designer at Envato</a> <span>2017-2018</span></h2>
-                                            <p>Even the all-powerful Pointing has no control about the blind texts it is
-                                                an almost unorthographic life One day however a small line of blind text
-                                                by the name of Lorem Ipsum decided to leave for the far World of
-                                                Grammar.</p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
-                                    <div class="timeline-entry-inner">
-                                        <div class="timeline-icon color-none">
-                                        </div>
-                                    </div>
-                                </article>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="colorlib-work" data-section="work">
-                <div class="colorlib-narrow-content">
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">My Work</span>
-                            <h2 class="colorlib-heading animate-box">Recent Work</h2>
-                        </div>
-                    </div>
-                    <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
                         <div class="col-md-12">
-                            <p class="work-menu"><span><a href="#" class="active">Graphic Design</a></span> <span><a
-                                    href="#">Web Design</a></span> <span><a href="#">Software</a></span> <span><a
-                                    href="#">Apps</a></span></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(images/img-1.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Work 01</a></h3>
-                                        <span>Website</span>
-                                        <p class="icon">
-                                            <span><a href="#"><i class="icon-share3"></i></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p>
-                                    </div>
-                                </div>
+                            <div class="timeline-centered">
+                                <c:forEach var="obj" items="${bloglist}">
+                                    <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+                                        <div class="timeline-entry-inner">
+                                            <div class="timeline-icon color-1">
+                                                <i class="icon-pen2"></i>
+                                            </div>
+
+                                            <div class="timeline-label">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <div>
+                                                        <h2>${obj.title} <span><fmt:formatDate
+                                                                pattern="yyyy년 MM월 dd일"
+                                                                value="${obj.rdate}"/></span></h2>
+                                                    </div>
+                                                    <div class="icon-container">
+                                                        <i id="delete_btn" class="icon-trash2" data-id="${obj.id}"></i>
+                                                    </div>
+                                                </div>
+
+                                                <p>${obj.contents}</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </c:forEach>
                             </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="project" style="background-image: url(images/img-2.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Work 02</a></h3>
-                                        <span>Animation</span>
-                                        <p class="icon">
-                                            <span><a href="#"><i class="icon-share3"></i></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-                            <div class="project" style="background-image: url(images/img-3.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Work 03</a></h3>
-                                        <span>Illustration</span>
-                                        <p class="icon">
-                                            <span><a href="#"><i class="icon-share3"></i></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-                            <div class="project" style="background-image: url(images/img-4.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Work 04</a></h3>
-                                        <span>Application</span>
-                                        <p class="icon">
-                                            <span><a href="#"><i class="icon-share3"></i></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="project" style="background-image: url(images/img-5.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Work 05</a></h3>
-                                        <span>Graphic, Logo</span>
-                                        <p class="icon">
-                                            <span><a href="#"><i class="icon-share3"></i></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="project" style="background-image: url(images/img-6.jpg);">
-                                <div class="desc">
-                                    <div class="con">
-                                        <h3><a href="work.html">Work 06</a></h3>
-                                        <span>Web Design</span>
-                                        <p class="icon">
-                                            <span><a href="#"><i class="icon-share3"></i></a></span>
-                                            <span><a href="#"><i class="icon-eye"></i> 100</a></span>
-                                            <span><a href="#"><i class="icon-heart"></i> 49</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box">
-                            <p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i
-                                    class="icon-reload"></i></a></p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="colorlib-blog" data-section="blog">
-                <div class="colorlib-narrow-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-                             data-animate-effect="fadeInLeft">
-                            <span class="heading-meta">Read</span>
-                            <h2 class="colorlib-heading">Recent Blog</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="blog-entry">
-                                <a href="blog.html" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive"
-                                                                          alt="HTML5 Bootstrap Template by colorlib.com"></a>
-                                <div class="desc">
-                                    <span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i
-                                            class="icon-bubble3"></i> 4</small></span>
-                                    <h3><a href="blog.html">Renovating National Gallery</a></h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInRight">
-                            <div class="blog-entry">
-                                <a href="blog.html" class="blog-img"><img src="images/blog-2.jpg" class="img-responsive"
-                                                                          alt="HTML5 Bootstrap Template by colorlib.com"></a>
-                                <div class="desc">
-                                    <span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i
-                                            class="icon-bubble3"></i> 4</small></span>
-                                    <h3><a href="blog.html">Wordpress for a Beginner</a></h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="blog-entry">
-                                <a href="blog.html" class="blog-img"><img src="images/blog-3.jpg" class="img-responsive"
-                                                                          alt="HTML5 Bootstrap Template by colorlib.com"></a>
-                                <div class="desc">
-                                    <span><small>April 14, 2018 </small> | <small> Inspiration </small> | <small> <i
-                                            class="icon-bubble3"></i> 4</small></span>
-                                    <h3><a href="blog.html">Make website from scratch</a></h3>
-                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-                                        large language ocean.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 animate-box">
-                            <p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i
-                                    class="icon-reload"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <section class="colorlib-contact" data-section="contact">
                 <div class="colorlib-narrow-content">
@@ -823,27 +622,16 @@
                                     <i class="icon-globe-outline"></i>
                                 </div>
                                 <div class="colorlib-text">
-                                    <p><a href="#">info@domain.com</a></p>
+                                    <p><a href="#">${student.email}</a></p>
                                 </div>
                             </div>
-
-                            <div class="colorlib-feature colorlib-feature-sm animate-box"
-                                 data-animate-effect="fadeInLeft">
-                                <div class="colorlib-icon">
-                                    <i class="icon-map"></i>
-                                </div>
-                                <div class="colorlib-text">
-                                    <p>198 West 21th Street, Suite 721 New York NY 10016</p>
-                                </div>
-                            </div>
-
                             <div class="colorlib-feature colorlib-feature-sm animate-box"
                                  data-animate-effect="fadeInLeft">
                                 <div class="colorlib-icon">
                                     <i class="icon-phone"></i>
                                 </div>
                                 <div class="colorlib-text">
-                                    <p><a href="tel://">+123 456 7890</a></p>
+                                    <p><a href="#">${student.contact}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -862,8 +650,9 @@
                                             <input type="text" class="form-control" placeholder="Subject">
                                         </div>
                                         <div class="form-group">
-                                            <textarea name="" id="message" cols="30" rows="7" class="form-control"
-                                                      placeholder="Message"></textarea>
+                                                    <textarea name="message" id="message" cols="30" rows="7"
+                                                              class="form-control"
+                                                              placeholder="Message"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary btn-send-message"
