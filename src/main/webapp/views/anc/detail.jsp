@@ -42,8 +42,11 @@
         background-color: #f5a425;
     }
 
-</style>
+    #anc_img {
+        width: 500px;
+    }
 
+</style>
 <section class="meetings-page" id="meetings">
     <div class="container">
         <div class="row">
@@ -53,7 +56,7 @@
                         <div class="item">
                             <h3>NOTICE</h3>
                             <p class="card-description">
-                                Detail Announcement
+                                DIGI CAM 공지사항 페이지입니다.
                             </p>
                             <table class="table table-hover" style="margin-top:30px;">
                                 <tbody>
@@ -61,17 +64,25 @@
                                     <th colspan="10">${anc.title}</th>
                                 </tr>
                                 <tr>
-                                    <td style = "text-align: start;"><b>Writer: </b>${anc.writer}  ｜  <b>Registered: </b>${anc.rdate}  ｜  <b>No.</b>${anc.id}</td>
+                                    <td style="text-align: start;"><b>Writer: </b>${anc.writer} ｜
+                                        <b>Registered: </b>${anc.rdate} ｜ <b>No.</b>${anc.id}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="10">
-                                        <c:choose>
-                                            <c:when test="${anc.img!=null}">
-                                                <img src="/uimg/${anc.img}" style="max-width:100%; margin:0; padding:0;">
-                                            </c:when>
-                                            <c:otherwise>
-                                            </c:otherwise>
-                                        </c:choose>${anc.contents}</td>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <c:choose>
+                                                <c:when test="${anc.img!=null}">
+                                                    <img src="/uimg/${anc.img}"
+                                                         style="width:100%; max-width:500px; margin:20px; padding:0;">
+                                                </c:when>
+                                                <c:otherwise>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
+                                        <div style="margin-bottom: 20px" class="d-flex flex-column align-items-center">
+                                            ${anc.contents}
+                                        </div>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -80,8 +91,9 @@
                 </div>
                 <div class="col-lg-12" style="margin:0 auto;">
                     <div class="main-button-red">
-                        <a href="javascript:history.back()">Back To Course List</a>
+                        <a href="javascript:history.back()">Back To Notice List</a>
                     </div>
+                </div>
             </div>
         </div>
     </div>

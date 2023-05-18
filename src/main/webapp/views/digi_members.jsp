@@ -136,6 +136,10 @@
         letter-spacing: 0.5px;
         font-size: 30px;
     }
+
+    h4,span{
+        color: whitesmoke;
+    }
 </style>
 
 
@@ -144,10 +148,8 @@
         <div class="row">
             <div class="col-lg-12 align-self-center">
                 <div class="item">
-                    <h3>Digi Members</h3>
-                    <span>Digi1기냐 2기 따로따로 검색
-                    edit 박스 digi입과날짜를 radio..?체크박스로 바꿔서 그 체크박스에 value를 날짜로 받아서 ...!
-                    그 날짜에 따라서 바꿔야겠다.</span>
+                    <h3>DIGI MEMBERS</h3>
+                    <span>Digi Members 2th 수강생들, 매니저님, 멘토님 그리고 강사님에 대한 정보를 조회하실 수 있습니다.</span>
                 </div>
 
                 <div class="item">
@@ -216,34 +218,7 @@
                                         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQvbP%2FbtquGXAE2mz%2FDGuT1PfA68CUuqN8AzdfLK%2Fimg.jpg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">Calvin Carlo</h4>
-                                            <small class="text-muted">C.E.O.</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/originals/b7/f4/69/b7f46900a33101dd15e14b6033723279.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Richha Jotchi</h4>
+                                            <h4 class="title mb-0">박다인</h4>
                                             <small class="text-muted">Manager</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
@@ -256,9 +231,8 @@
                                                                                 class="rounded"><img
                                                         src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
                                                 </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
+                                                <li class="list-inline-item"><a href="#" class="rounded"><img
+                                                        src="https://cdn-icons-png.flaticon.com/512/10308/10308259.png"></a>
                                                 </li>
                                             </ul><!--end icon-->
                                         </div>
@@ -267,11 +241,11 @@
 
                                 <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                                     <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FckEugc%2FbtquHRtc6NC%2FrmkohDL9SQGwWwcKj2Po51%2Fimg.jpg"
+                                        <img src="https://i.pinimg.com/564x/36/73/b6/3673b6f32dd5493ddac55a7ccf105cd1.jpg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">Cristino Murfy</h4>
-                                            <small class="text-muted">Accountant</small>
+                                            <h4 class="title mb-0">김기현</h4>
+                                            <small class="text-muted">Mentor</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
                                                 <li class="list-inline-item"><a href="javascript:void(0)"
@@ -283,21 +257,21 @@
                                                                                 class="rounded"><img
                                                         src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
                                                 </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
+                                                <li class="list-inline-item"><a href="#" class="rounded"><img
+                                                        src="https://cdn-icons-png.flaticon.com/512/10308/10308259.png"></a>
                                                 </li>
                                             </ul><!--end icon-->
                                         </div>
                                     </div>
                                 </div><!--end col-->
+
                                 <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                                     <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbwKVT0%2FbtquFeiHcid%2FL6JoKmQD2IRMXj5dgB7qr1%2Fimg.jpg"
+                                        <img src="https://i.pinimg.com/564x/f0/9d/c3/f09dc33334ef669b35ad47fb4a04c7bf.jpg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">Lisa Martin</h4>
-                                            <small class="text-muted">Founder</small>
+                                            <h4 class="title mb-0">심재현</h4>
+                                            <small class="text-muted">Mentor</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
                                                 <li class="list-inline-item"><a href="javascript:void(0)"
@@ -309,22 +283,20 @@
                                                                                 class="rounded"><img
                                                         src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
                                                 </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
+                                                <li class="list-inline-item"><a href="#" class="rounded"><img
+                                                        src="https://cdn-icons-png.flaticon.com/512/10308/10308259.png"></a>
                                                 </li>
                                             </ul><!--end icon-->
                                         </div>
                                     </div>
                                 </div><!--end col-->
-
                                 <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                                     <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/originals/61/ae/9f/61ae9f214f56687cb0a689c50682a222.jpg"
+                                        <img src="/uimg/강사님.jpeg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">Calvin Carlo</h4>
-                                            <small class="text-muted">C.E.O.</small>
+                                            <h4 class="title mb-0">이진만</h4>
+                                            <small class="text-muted">Super Star instructor</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
                                                 <li class="list-inline-item"><a href="javascript:void(0)"
@@ -336,173 +308,14 @@
                                                                                 class="rounded"><img
                                                         src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
                                                 </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
+                                                <li class="list-inline-item"><a href="#" class="rounded"><img
+                                                        src="https://cdn-icons-png.flaticon.com/512/10308/10308259.png"></a>
                                                 </li>
                                             </ul><!--end icon-->
                                         </div>
                                     </div>
                                 </div><!--end col-->
 
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/736x/5c/5f/28/5c5f2827e401e63aa3fb5edc3dd42162.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Richha Jotchi</h4>
-                                            <small class="text-muted">Manager</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/736x/28/4e/75/284e75aebee2c175a515842c4895653d.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Cristino Murfy</h4>
-                                            <small class="text-muted">Accountant</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/originals/ad/f8/1c/adf81ce5823ac3072b7c1e5581a88761.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Lisa Martin</h4>
-                                            <small class="text-muted">Founder</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/originals/47/e0/fd/47e0fd6028b88a97f242406ca5c470d3.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Richha Jotchi</h4>
-                                            <small class="text-muted">Manager</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/736x/10/e8/11/10e8119dabcfa3403301221f65c71b34.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Richha Jotchi</h4>
-                                            <small class="text-muted">Manager</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                                    <div class="team text-center rounded p-3 py-4">
-                                        <img src="https://i.pinimg.com/736x/10/e8/11/10e8119dabcfa3403301221f65c71b34.jpg"
-                                             class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-                                        <div class="content mt-3">
-                                            <h4 class="title mb-0">Richha Jotchi</h4>
-                                            <small class="text-muted">Manager</small>
-                                            <ul class="list-unstyled mt-3 social-icon social mb-0">
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                                                </li>
-
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)"
-                                                                                class="rounded"><img
-                                                        src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-                                                </li>
-                                            </ul><!--end icon-->
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
                             </div>
                         </div>
                     </section>
