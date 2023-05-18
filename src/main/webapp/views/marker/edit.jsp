@@ -117,9 +117,9 @@
                                     <div style="margin-left: 0.2px" class="form-group row">
                                         <div class="col-sm-6">
                                             <select class="form-select" id="keyword" name="keyword">
-                                                <option>Cafe</option>
-                                                <option>Restaurant</option>
-                                                <option>Study Cafe</option>
+                                                <option value="C">Cafe</option>
+                                                <option value="R">Restaurant</option>
+                                                <option value="S">Study Cafe</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-6">

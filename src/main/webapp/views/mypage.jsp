@@ -78,10 +78,12 @@
                     myblog.send();
                 });
                 document.getElementById('delete_btn').addEventListener('click', function () {
-                    if (confirm("삭제하시겠습니까?")) {
-                        var id = this.getAttribute('data-id');
-                        location.href = "/student/blogdelete?id=" + id;
-                    }
+                    var id = this.getAttribute('data-id');
+                    location.href = "/student/blogdelete?id=" + id;
+                    // if (confirm("삭제하시겠습니까?")) {
+                    //     var id = this.getAttribute('data-id');
+                    //     location.href = "/student/blogdelete?id=" + id;
+                    // }
                 });
             },
             send: function () {
@@ -589,7 +591,8 @@
                                                                 value="${obj.rdate}"/></span></h2>
                                                     </div>
                                                     <div class="icon-container">
-                                                        <i id="delete_btn" class="icon-trash2" data-id="${obj.id}"></i>
+                                                        <i class="icon-trash2"
+                                                           data-toggle="modal" data-target="#img${obj.id}"></i>
                                                     </div>
                                                 </div>
 
@@ -597,6 +600,29 @@
                                             </div>
                                         </div>
                                     </article>
+                                    <div id="img${obj.id}" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Warning⚠️</h4>
+                                                </div>
+                                                <div class="modal-body text-center d-flex flex-column">
+                                                    <p>정말로 삭제하시겠습니까?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                    <button id="delete_btn" data-id="${obj.id}" type="button"
+                                                            class="btn btn-default"
+                                                            data-dismiss="modal">Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </c:forEach>
                             </div>
                         </div>
