@@ -188,5 +188,10 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/mycourse1")
+    public String mycourse1(Model model) throws Exception {
+        model.addAttribute("center", "mycourse1");
+        return "index";
 
+    }
 }

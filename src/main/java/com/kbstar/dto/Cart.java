@@ -2,7 +2,6 @@ package com.kbstar.dto;
 
 import lombok.*;
 
-import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,12 +14,6 @@ public class Cart {
     private Integer lectureId;
     private String rdate;
 
-    public Cart(Integer id, String studentId, Integer lectureId, String rdate) {
-        this.id = id;
-        this.studentId = studentId;
-        this.lectureId = lectureId;
-        this.rdate = rdate;
-    }
 
     private String student_name;
     private String lecture_title;
@@ -28,7 +21,15 @@ public class Cart {
     private int lecture_price;
     private String lecture_target;
     private String lecture_img;
+    private int cnt;
 
+
+    public Cart(Integer id, String studentId, Integer lectureId, String rdate) {
+        this.id = id;
+        this.studentId = studentId;
+        this.lectureId = lectureId;
+        this.rdate = rdate;
+    }
 
     public Cart(String studentId, Integer lectureId) {
         this.studentId = studentId;

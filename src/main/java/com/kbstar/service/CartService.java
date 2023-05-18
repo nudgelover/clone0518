@@ -47,4 +47,8 @@ public class CartService implements KBService<Integer, Cart> {
         return mapper.thisCart(lectureId, studentId);
     }
 
+    public Integer cntMyCart(String studentId) {
+        return mapper.cntMyCart(studentId);
+    }
+
 }

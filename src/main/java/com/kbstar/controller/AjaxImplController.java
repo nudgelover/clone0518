@@ -1,11 +1,14 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Cart;
+import com.kbstar.dto.Marker;
 import com.kbstar.dto.Student;
 import com.kbstar.service.CartService;
+import com.kbstar.service.MarkerService;
 import com.kbstar.service.StudentService;
 import com.kbstar.utill.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +23,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
 @Slf4j
 
 @RestController
@@ -33,6 +38,9 @@ public class AjaxImplController {
 
     @Autowired
     CartService cartService;
+
+    @Autowired
+    MarkerService markerService;
 
     @RequestMapping("/getservertime")
     public Object getservertime(){
@@ -113,6 +121,33 @@ public class AjaxImplController {
             cartService.register(cart);
         }
         return result;
+    }
+
+
+    @RequestMapping("/markers")
+    public Object markers(String keyword) throws Exception {
+
+        List<Marker> list = null;
+        try {
+            list = markerService.getKeyword(keyword);
+        }catch (Exception e) {
+            throw new Exception("시스템 장애: ER0003");
+        }
+
+        JSONArray ja = new JSONArray();
+        for(Marker obj:list){
+            JSONObject jo = new JSONObject();
+            jo.put("id", obj.getId());
+            jo.put("writer", obj.getWriter());
+            jo.put("keyword", obj.getKeyword());
+            jo.put("title", obj.getTitle());
+            jo.put("lat", obj.getLat());
+            jo.put("lng", obj.getLng());
+            jo.put("img", obj.getImg());
+            jo.put("star", obj.getStar());
+            ja.add(jo);
+        }
+        return ja;
     }
 
 }

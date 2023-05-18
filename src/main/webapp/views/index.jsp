@@ -15,6 +15,8 @@
     <title>DIGICampus</title>
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Kakao Map api-->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f5f154fb7d1604c83c2bdb25d0f4a23c"></script>
     <!--HighCharts-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
@@ -50,7 +52,7 @@
                             <c:when test="${loginStudent!=null}">
                                 <li><a href="/digimembers">Digi Members</a></li>
                                 <li><a href="/apply">JMTGR</a></li>
-                                <li><a href="/apply">Board</a></li>
+                                <li><a href="/anc/allpage">Board</a></li>
                                 <li><a href="/apply">Chat</a></li>
                                 <li class="has-sub">
                                     <a href="javascript:void(0)">Courses</a>

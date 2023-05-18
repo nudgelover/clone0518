@@ -92,7 +92,7 @@
                                 <div class="date">
                                     <h6>TOPIC <span>${lecture.topic}</span></h6>
                                 </div>
-                                <a href="${lecture.target}"><img src="/uimg/${lecture.img}" alt=""></a>
+                                <a href="${lecture.target}"><img src="/uimg/${lecture.img}" style="border-top-right-radius: 20px;border-top-left-radius: 20px;" alt=""></a>
                             </div>
                             <div class="down-content">
                                 <a href="${lecture.target}"><h4>${lecture.title}</h4></a>

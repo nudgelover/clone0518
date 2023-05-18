@@ -13,4 +13,6 @@ public interface CartMapper extends KBMapper<Integer, Cart> {
     public List<Cart> getMyCart(String studentId);
 
     public Cart thisCart(Integer lectureId, String studentId);
+
+    public Integer cntMyCart(String studentId);
 }

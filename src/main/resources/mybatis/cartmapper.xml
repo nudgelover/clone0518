@@ -16,7 +16,6 @@
           AND c.studentId = #{studentId}
     </select>
 
-
     <select id="select" parameterType="Integer" resultType="Cart">
         SELECT c.id, c.studentId, c.lectureId, c.rdate
              , s.name AS student_name, l.title As lecture_title
@@ -37,6 +36,13 @@
           AND c.lectureId = l.id
           AND c.studentId=#{studentId}
     </select>
+
+    <select id="cntMyCart" parameterType="String" resultType="Integer">
+        SELECT COUNT(id) AS cnt
+        FROM cart
+        WHERE studentId = #{studentId}
+    </select>
+
     <select id="selectall" resultType="Cart">
         SELECT c.id, c.studentId, c.lectureId, c.rdate
              , s.name AS student_name, l.title As lecture_title

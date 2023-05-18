@@ -3,6 +3,7 @@ package com.kbstar.controller;
 import com.github.pagehelper.PageInfo;
 import com.kbstar.dto.Cart;
 import com.kbstar.dto.Lecture;
+import com.kbstar.dto.Student;
 import com.kbstar.service.CartService;
 import com.kbstar.service.LectureService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -63,14 +65,29 @@ public class LectureController {
 
         try {
             list = cartService.getMyCart(id);
+            log.info("요기잉네"+list.toString());
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("시스템 장애: ER0002");
         }
 
+        int cnt = cartService.cntMyCart(id);
+        log.info("cnt"+cnt);
+        model.addAttribute("cnt",cnt);
         model.addAttribute("mycourse", list);
         model.addAttribute("center", dir+"mycourse");
         return "index";
+    }
+
+    @RequestMapping("/cartdelete")
+    public String cartdelete(Model model,Integer id, HttpSession session) throws Exception {
+
+        cartService.remove(id);
+        if(session != null){
+            Student student = (Student) session.getAttribute("loginStudent");
+            return "redirect:/lecture/mycourse?id="+student.getId();
+        }
+        return "redirect:/";
     }
 
 
