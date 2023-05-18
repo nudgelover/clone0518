@@ -126,7 +126,7 @@ public class AjaxImplController {
 
     @RequestMapping("/markers")
     public Object markers(String keyword) throws Exception {
-
+        log.info("오냐"+keyword);
         List<Marker> list = null;
         try {
             list = markerService.getKeyword(keyword);

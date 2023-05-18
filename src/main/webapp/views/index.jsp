@@ -51,7 +51,13 @@
                         <c:choose>
                             <c:when test="${loginStudent!=null}">
                                 <li><a href="/digimembers">Digi Members</a></li>
-                                <li><a href="/apply">JMTGR</a></li>
+                                <li class="has-sub">
+                                    <a href="javascript:void(0)">JMTGR</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/marker/all">View JMT</a></li>
+                                        <li><a href="/marker/add">Add Marker</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="/anc/allpage">Board</a></li>
                                 <li><a href="/apply">Chat</a></li>
                                 <li class="has-sub">

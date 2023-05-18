@@ -65,7 +65,6 @@ public class LectureController {
 
         try {
             list = cartService.getMyCart(id);
-            log.info("요기잉네"+list.toString());
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("시스템 장애: ER0002");

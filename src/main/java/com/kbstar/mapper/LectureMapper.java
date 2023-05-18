@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface LectureMapper extends KBMapper<Integer, Lecture> {
     Page<Lecture> getpage() throws Exception;
+
 }

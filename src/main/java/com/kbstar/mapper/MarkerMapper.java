@@ -14,4 +14,6 @@ public interface MarkerMapper extends KBMapper<Integer, Marker> {
 
     public List<Marker> getKeyword(String keyword);
 
+    public List<Marker> getRecent();
+
 }

@@ -46,4 +46,9 @@ public class MarkerService implements KBService<Integer, Marker> {
     public List<Marker> getKeyword(String keyword){
         return mapper.getKeyword(keyword);
     }
+
+    public List<Marker> getRecent(){
+        return mapper.getRecent();
+    }
+
 }

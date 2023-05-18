@@ -16,6 +16,20 @@
     <select id="selectall" resultType="marker">
         SELECT * FROM marker
     </select>
+    <select id="getRecent" resultType="marker">
+    <![CDATA[
+SELECT *
+FROM (
+    SELECT *
+    FROM marker
+    ORDER BY id DESC
+)
+WHERE ROWNUM <= 5
+]]>
+    </select>
+
+
+
     <insert id="insert" parameterType="marker">
         INSERT INTO marker
             (id, writer, keyword, title, lat, lng, img, star, detail)
