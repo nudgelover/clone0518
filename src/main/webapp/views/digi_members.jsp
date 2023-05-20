@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%--ºÎÆ®½ºÆ®·¦--%>
+<%--ë¶€íŠ¸ìŠ¤íŠ¸ëž©--%>
 <!-- Latest compiled and minified CSS -->
 <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">--%>
 
@@ -149,7 +149,7 @@
             <div class="col-lg-12 align-self-center">
                 <div class="item">
                     <h3>DIGI MEMBERS</h3>
-                    <span>Digi Members 2th ¼ö°­»ýµé, ¸Å´ÏÀú´Ô, ¸àÅä´Ô ±×¸®°í °­»ç´Ô¿¡ ´ëÇÑ Á¤º¸¸¦ Á¶È¸ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.</span>
+                    <span>Digi Members ìˆ˜ê°•ìƒë“¤, ë§¤ë‹ˆì €ë‹˜, ë©˜í† ë‹˜ ê·¸ë¦¬ê³  ê°•ì‚¬ë‹˜ì— ëŒ€í•œ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</span>
                 </div>
 
                 <div class="item">
@@ -192,7 +192,7 @@
                                             <!-- Modal content-->
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">${obj.name}ÀÇ ¿¬¶ôÃ³</h4>
+                                                    <h4 class="modal-title">${obj.name}ì˜ ì—°ë½ì²˜</h4>
                                                 </div>
                                                 <div class="modal-body text-center d-flex flex-column">
                                                     <p style="color: black">PHONE NUMBER : ${obj.contact}</p>
@@ -218,7 +218,7 @@
                                         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvQvbP%2FbtquGXAE2mz%2FDGuT1PfA68CUuqN8AzdfLK%2Fimg.jpg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">¹Ú´ÙÀÎ</h4>
+                                            <h4 class="title mb-0">ë°•ë‹¤ì¸</h4>
                                             <small class="text-muted">Manager</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
@@ -244,7 +244,7 @@
                                         <img src="https://i.pinimg.com/564x/36/73/b6/3673b6f32dd5493ddac55a7ccf105cd1.jpg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">±è±âÇö</h4>
+                                            <h4 class="title mb-0">ê¹€ê¸°í˜„</h4>
                                             <small class="text-muted">Mentor</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
@@ -270,7 +270,7 @@
                                         <img src="https://i.pinimg.com/564x/f0/9d/c3/f09dc33334ef669b35ad47fb4a04c7bf.jpg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">½ÉÀçÇö</h4>
+                                            <h4 class="title mb-0">ì‹¬ìž¬í˜„</h4>
                                             <small class="text-muted">Mentor</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
@@ -292,10 +292,10 @@
                                 </div><!--end col-->
                                 <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                                     <div class="team text-center rounded p-3 py-4">
-                                        <img src="/uimg/°­»ç´Ô.jpeg"
+                                        <img src="/uimg/ê°•ì‚¬ë‹˜.jpeg"
                                              class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
                                         <div class="content mt-3">
-                                            <h4 class="title mb-0">ÀÌÁø¸¸</h4>
+                                            <h4 class="title mb-0">ì´ì§„ë§Œ</h4>
                                             <small class="text-muted">Super Star instructor</small>
                                             <ul class="list-unstyled mt-3 social-icon social mb-0">
 
