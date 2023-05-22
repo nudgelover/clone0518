@@ -27,7 +27,7 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <h6>Hello ${loginStudent.name}´Ô!</h6>
+                                <h6>Hello ${loginStudent.name}ë‹˜! ë°˜ê°‘ìŠµë‹ˆë‹¤</h6>
                                 <h2>Welcome to DIGICampus</h2>
                                 <p>We provide wide variety of programming courses both back-end and front end.
                                     <a rel="nofollow" href="/lecture/allpage" target="_blank">Click Here to View All
@@ -58,10 +58,10 @@
                         </div>
                         <div class="down-content">
                             <h4>New lecture open!</h4>
-                            <p>¼ö°­»ýºÐµéÀÌ ±â´Ù¸®½Ã´ø ±× °­ÀÇ!</p>
+                            <p>ìˆ˜ê°•ìƒë¶„ë“¤ì´ ê¸°ë‹¤ë¦¬ì‹œë˜ ê·¸ ê°•ì˜!</p>
                             <p><span style="font-weight:bold; color: orange">
-                                "ÇÑÀÔ Å©±â·Î Àß¶ó ¸Ô´Â ¸®¾×Æ®(React.js)"
-                            </span>°¡ ¾÷µ¥ÀÌÆ® µÇ¾ú½À´Ï´Ù! ½Å±Ô ÀÌº¥Æ®°¡·Î ¸¸³ªº¸¼¼¿ä!
+                                "í•œìž… í¬ê¸°ë¡œ ìž˜ë¼ ë¨¹ëŠ” ë¦¬ì•¡íŠ¸(React.js)"
+                            </span>ê°€ ì—…ë°ì´íŠ¸ ë˜ì—ˆìŠµë‹ˆë‹¤! ì‹ ê·œ ì´ë²¤íŠ¸ê°€ë¡œ ë§Œë‚˜ë³´ì„¸ìš”!
                             </p>
                         </div>
                     </div>
@@ -71,10 +71,10 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/2545/2545619.png" alt="">
                         </div>
                         <div class="down-content">
-                            <h4>½ºÅÍµðÀÏÁö¿Õ</h4>
-                            <p>4¿ù ½ºÅÍµðÀÏÁö¿Õ <span style="font-weight:bold; color: orange">¹Ú¼±¹Ì ´ë¸®´Ô</span>!</p>
-                            <p> 4¿ù ÇÑ´Þ °£ 29È¸ÀÇ ½ºÅÍµðÀÏÁö¸¦ ÀÛ¼ºÇÏ¼Ì½À´Ï´Ù. </p>
-                            <p>ÃàÇÏÇÕ´Ï´Ù!</p>
+                            <h4>ìŠ¤í„°ë””ì¼ì§€ì™•</h4>
+                            <p>4ì›” ìŠ¤í„°ë””ì¼ì§€ì™• <span style="font-weight:bold; color: orange">ë°•ì„ ë¯¸ ëŒ€ë¦¬ë‹˜</span>!</p>
+                            <p> 4ì›” í•œë‹¬ ê°„ 29íšŒì˜ ìŠ¤í„°ë””ì¼ì§€ë¥¼ ìž‘ì„±í•˜ì…¨ìŠµë‹ˆë‹¤. </p>
+                            <p>ì¶•í•˜í•©ë‹ˆë‹¤!</p>
                         </div>
                     </div>
 
@@ -84,8 +84,8 @@
                         </div>
                         <div class="down-content">
                             <h4>Happy Birthday!</h4>
-                            <p>»ýÀÏ ÃàÇÏÇÕ´Ï´Ù! ¼ÒÁßÇÑ <span style="font-weight:bold; color: orange">¹®´ëÈ£ ´ë¸®´Ô</span>! </p>
-                            <p><span style="font-weight:bold; color: orange">5¿ù 5ÀÏ ¹®´ëÈ£ ´ë¸®´Ô</span>ÀÇ »ýÀÏÀÔ´Ï´Ù. ¸¹Àº ÃàÇÏ ºÎÅ¹µå¸³´Ï´Ù.
+                            <p>ìƒì¼ ì¶•í•˜í•©ë‹ˆë‹¤! ì†Œì¤‘í•œ <span style="font-weight:bold; color: orange">ë¬¸ëŒ€í˜¸ ëŒ€ë¦¬ë‹˜</span>! </p>
+                            <p><span style="font-weight:bold; color: orange">5ì›” 5ì¼ ë¬¸ëŒ€í˜¸ ëŒ€ë¦¬ë‹˜</span>ì˜ ìƒì¼ìž…ë‹ˆë‹¤. ë§Žì€ ì¶•í•˜ ë¶€íƒë“œë¦½ë‹ˆë‹¤.
                             </p>
 
                         </div>
@@ -93,12 +93,12 @@
 
                     <div class="item">
                         <div class="icon">
-                            <img src="/uimg/°­»ç´Ô.jpeg" alt="">
+                            <img src="/uimg/ê°•ì‚¬ë‹˜.jpeg" alt="">
                         </div>
                         <div class="down-content">
-                            <h4><span style="color: orange">±ä±Þ°øÁö!</span> 5/15 ½º½ÂÀÇ³¯ Çà»ç¾È³»</h4>
-                            <p>5/15ÀÏ ½º½ÂÀÇ ³¯À» ¸ÂÀÌÇÏ¿© ÀÌÁø¸¸ °­»ç´Ô²² Ä«³×ÀÌ¼Ç ¼ö¿©½ÄÀÌ ÀÖÀ» ¿¹Á¤ÀÔ´Ï´Ù.</p>
-                            <p>DIGI MEMBERºÐµéÀº <span style="color: orange">12:50ºÐ</span>±îÁö ÀÚ¸®¿¡ Âø¼®ÇØÁÖ¼¼¿ä!</p>
+                            <h4><span style="color: orange">ê¸´ê¸‰ê³µì§€!</span> 5/15 ìŠ¤ìŠ¹ì˜ë‚  í–‰ì‚¬ì•ˆë‚´</h4>
+                            <p>5/15ì¼ ìŠ¤ìŠ¹ì˜ ë‚ ì„ ë§žì´í•˜ì—¬ ì´ì§„ë§Œ ê°•ì‚¬ë‹˜ê»˜ ì¹´ë„¤ì´ì…˜ ìˆ˜ì—¬ì‹ì´ ìžˆì„ ì˜ˆì •ìž…ë‹ˆë‹¤.</p>
+                            <p>DIGI MEMBERë¶„ë“¤ì€ <span style="color: orange">12:50ë¶„</span>ê¹Œì§€ ìžë¦¬ì— ì°©ì„í•´ì£¼ì„¸ìš”!</p>
                         </div>
                     </div>
 
